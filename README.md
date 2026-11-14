@@ -8,6 +8,7 @@ Required by Google Cloud to switch OAuth apps to **In production** (stops Google
 |---|---|
 | Homepage | https://shekonesta94.github.io |
 | Privacy Policy | https://shekonesta94.github.io/privacy.html |
+| Terms & Conditions (Nesta Automation, AR + EN) | https://shekonesta94.github.io/terms/ |
 
 ## Files
 | File | Purpose |
