@@ -2,44 +2,102 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>الشروط والأحكام | Terms & Conditions — Nesta Automation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="الشروط والأحكام لخدمات Nesta Automation - Terms and Conditions for Nesta Automation services">
+<link rel="icon" type="image/png" href="../assets/nesta-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
 <style>
-  :root{--ink:#1f2933;--muted:#616e7c;--line:#e4e7eb;--accent:#0f766e;--bg:#f8fafb}
-  *{box-sizing:border-box}
-  body{font-family:"Segoe UI",Tahoma,system-ui,-apple-system,Roboto,Arial,sans-serif;margin:0;background:var(--bg);color:var(--ink);line-height:1.85}
-  header{background:#fff;border-bottom:1px solid var(--line)}
-  .wrap{max-width:820px;margin:0 auto;padding:0 20px}
-  header .wrap{display:flex;justify-content:space-between;align-items:center;padding-top:18px;padding-bottom:18px;gap:12px;flex-wrap:wrap}
-  .brand{font-weight:700;font-size:20px;color:var(--accent);text-decoration:none}
-  nav a{color:var(--accent);text-decoration:none;font-weight:600;margin-inline-start:14px}
-  main{padding:28px 0 60px}
-  section.lang{background:#fff;border:1px solid var(--line);border-radius:10px;padding:28px 30px;margin-bottom:28px}
-  h1{font-size:26px;margin:0 0 4px}
-  .muted{color:var(--muted);font-size:14px}
-  h2{font-size:18px;margin:28px 0 8px;color:var(--accent)}
-  ul{padding-inline-start:22px;margin:6px 0}
-  li{margin:4px 0}
-  .note{background:#f0fdfa;border:1px solid #ccfbf1;border-radius:8px;padding:12px 14px;margin-top:10px}
-  #en{direction:ltr;text-align:left}
-  footer{text-align:center;color:var(--muted);font-size:13px;padding-bottom:30px}
-  a{color:var(--accent)}
-  @media (max-width:560px){section.lang{padding:20px 18px}h1{font-size:22px}}
+/* Layout: calm reading page — brand header, sticky contents list beside one paper column. No motion beyond a thin reading-progress line. */
+:root{
+  --navy:#101C2E; --navy-2:#16253B; --navy-3:#0B1626; --line-n:#24364F;
+  --paper:#F7F9FB; --ground:#E9EEF2; --line:#D8E0E8;
+  --ink:#16233A; --muted:#5A667B; --snow:#EAF0F5; --snow-mut:#A3B1C2;
+  --mint:#4BE3A8; --mint-deep:#0C7A55; --mint-soft:#E2F6EE;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic","Readex Pro","Segoe UI",Tahoma,sans-serif;
+  --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.9;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-size:16.5px;line-height:1.8}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+:focus-visible{outline:2px solid var(--mint-deep);outline-offset:3px;border-radius:6px}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:var(--snow);border-bottom:1px solid var(--line-n)}
+.head .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--snow);direction:ltr;flex-shrink:0}
+.brand i{width:52px;aspect-ratio:300/216;background:url("../assets/nesta-mark.png") center/contain no-repeat;display:block}
+.brand b{font-family:"Readex Pro",sans-serif;font-weight:600;font-size:20px;line-height:1}
+.brand small{display:block;font-family:"Readex Pro",sans-serif;font-size:9px;letter-spacing:.24em;color:var(--snow-mut);margin-top:4px}
+.links{display:flex;gap:4px;margin-inline-start:auto}
+.links a{color:var(--snow-mut);text-decoration:none;font-size:14.5px;padding:7px 12px;border-radius:8px}
+.links a:hover{color:var(--snow);background:var(--navy-2)}
+.links a[aria-current="page"]{color:var(--snow);background:var(--navy-2)}
+.lang{display:flex;background:var(--navy-2);border:1px solid var(--line-n);border-radius:999px;padding:3px;direction:ltr}
+.lang button{font:500 13px/1 "Readex Pro",sans-serif;border:0;background:none;color:var(--snow-mut);padding:7px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--snow);color:var(--navy)}
+.progress{position:absolute;inset-inline-start:0;bottom:-1px;height:2px;width:0;background:var(--mint)}
+@media (max-width:760px){.links{display:none}.lang{margin-inline-start:auto}.brand small{display:none}}
+
+main{padding-block:40px 72px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
+.toc{position:sticky;top:96px;font-size:14.5px;display:grid;gap:2px;max-height:calc(100vh - 120px);overflow:auto;padding-inline-end:4px}
+.toc p{margin:0 0 8px;font-family:var(--f-display);font-weight:600;font-size:13px;color:var(--muted)}
+.toc a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px;line-height:1.5;border-inline-start:2px solid transparent}
+.toc a:hover{color:var(--ink);background:#DDE4EB}
+.toc a.on{color:var(--mint-deep);background:var(--mint-soft);border-inline-start-color:var(--mint-deep);font-weight:600}
+.paper{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,52px) clamp(20px,4.5vw,60px);min-width:0}
+.crumb{font-size:13.5px;color:var(--muted);margin-bottom:6px}
+.crumb a{color:var(--muted)}
+.paper h1{font-family:var(--f-display);font-size:clamp(28px,3.4vw,36px);font-weight:600;margin:0;line-height:1.3;text-wrap:balance}
+.paper .muted{color:var(--muted);font-size:14px;margin:6px 0 0}
+.paper h1 + p.muted{padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.paper h2{font-family:var(--f-display);font-size:19px;font-weight:600;color:var(--navy);margin:34px 0 8px;scroll-margin-top:96px;line-height:1.5}
+.paper p{margin:8px 0;max-width:72ch}
+.paper ul{padding-inline-start:22px;margin:8px 0;max-width:72ch}
+.paper li{margin:6px 0}
+.paper li::marker{color:var(--mint-deep)}
+.paper b,.paper strong{color:var(--navy);font-weight:600}
+.paper a{color:var(--mint-deep);text-underline-offset:3px}
+.paper em{color:var(--muted)}
+.paper .note{background:var(--mint-soft);border-inline-start:3px solid var(--mint-deep);border-radius:8px;padding:12px 16px;margin-top:22px;font-size:15.5px}
+section.lang-block[hidden]{display:none}
+@media (max-width:900px){.layout{grid-template-columns:1fr}.toc{display:none}}
+
+.foot{background:var(--navy-3);color:var(--snow-mut);font-size:14px}
+.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:24px}
+.foot a{color:var(--snow-mut);text-decoration:none}
+.foot a:hover{color:var(--mint)}
+.foot nav{display:flex;gap:18px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<header>
+<header class="head">
   <div class="wrap">
-    <a class="brand" href="#ar">Nesta Automation</a>
-    <nav><a href="#ar">العربية</a><a href="#en">English</a></nav>
+    <a class="brand" href="https://shekonesta94.github.io/" aria-label="Nesta Automation"><i></i><span><b>Nesta</b><small>AUTOMATION SERVICES</small></span></a>
+    <nav class="links">
+      <a href="https://shekonesta94.github.io/" data-t="home">الرئيسية</a>
+      <a href="https://shekonesta94.github.io/terms/" data-t="terms" aria-current="page">الشروط والأحكام</a>
+      <a href="https://shekonesta94.github.io/privacy.html" data-t="privacy" >سياسة الخصوصية</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language"><button type="button" id="l-ar" data-l="ar" aria-pressed="true">ع</button><button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button></div>
   </div>
+  <div class="progress" id="progress"></div>
 </header>
 
-<main class="wrap">
-
-<!-- ===================== ARABIC ===================== -->
-<section class="lang" id="ar" lang="ar" dir="rtl">
+<main>
+  <div class="wrap layout">
+    <aside class="toc" id="toc" aria-label="Contents"></aside>
+    <article class="paper">
+      <div class="crumb"><a href="https://shekonesta94.github.io/">Nesta Automation</a> ‹ <span id="crumb">الشروط والأحكام</span></div>
+<section class="lang-block" id="ar" lang="ar" dir="rtl">
   <h1>الشروط والأحكام</h1>
   <p class="muted">Nesta Automation — آخر تحديث: 14 نوفمبر 2026</p>
 
@@ -177,8 +235,7 @@
   <p class="note">في حال وجود أي اختلاف بين النسخة العربية والنسخة الإنجليزية، يُعتمد النص العربي.</p>
 </section>
 
-<!-- ===================== ENGLISH ===================== -->
-<section class="lang" id="en" lang="en" dir="ltr">
+<section class="lang-block" id="en" lang="en" dir="ltr">
   <h1>Terms &amp; Conditions</h1>
   <p class="muted">Nesta Automation — Last updated: 14 November 2026</p>
 
@@ -315,8 +372,65 @@
   <p><a href="mailto:hishamfthi.business@gmail.com">hishamfthi.business@gmail.com</a></p>
   <p class="note">If the Arabic and English versions differ, the Arabic text prevails.</p>
 </section>
-
+    </article>
+  </div>
 </main>
-<footer>© 2026 Nesta Automation</footer>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Nesta Automation</span>
+    <nav>
+      <a href="https://shekonesta94.github.io/" data-t="home">الرئيسية</a>
+      <a href="https://shekonesta94.github.io/terms/" data-t="terms">الشروط والأحكام</a>
+      <a href="https://shekonesta94.github.io/privacy.html" data-t="privacy">سياسة الخصوصية</a>
+      <a href="https://wa.me/201093114446" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.facebook.com/nestaautomation" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var NAV = {ar:{home:'الرئيسية',terms:'الشروط والأحكام',privacy:'سياسة الخصوصية',toc:'المحتويات'}, en:{home:'Home',terms:'Terms & Conditions',privacy:'Privacy Policy',toc:'Contents'}};
+  var blocks = document.querySelectorAll('section.lang-block');
+  var toc = document.getElementById('toc');
+  var tocLinks = [], heads = [];
+  function buildToc(sec, l){
+    toc.innerHTML = '';
+    var p = document.createElement('p'); p.textContent = NAV[l].toc; toc.appendChild(p);
+    heads = Array.prototype.slice.call(sec.querySelectorAll('h2'));
+    tocLinks = heads.map(function(h, i){
+      if(!h.id) h.id = (sec.id || 's') + '-' + (i+1);
+      var a = document.createElement('a'); a.href = '#' + h.id; a.textContent = h.textContent; toc.appendChild(a); return a;
+    });
+    spy();
+  }
+  function setLang(l){
+    var target = null;
+    blocks.forEach(function(b){ var on = b.getAttribute('lang') === l; b.hidden = !on; if(on) target = b; });
+    if(!target){ target = blocks[0]; l = target.getAttribute('lang'); target.hidden = false; }
+    document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-t]').forEach(function(a){ a.textContent = NAV[l][a.dataset.t]; });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.l === l ? 'true' : 'false'); });
+    var h1 = target.querySelector('h1'); if(h1) document.getElementById('crumb').textContent = h1.textContent;
+    try{ localStorage.setItem('nesta-lang', l); }catch(e){}
+    buildToc(target, l);
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.l); window.scrollTo(0,0); }); });
+
+  var bar = document.getElementById('progress');
+  function spy(){
+    var h = document.documentElement; bar.style.width = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100).toFixed(1) + '%';
+    var cur = 0; heads.forEach(function(x, i){ if(x.getBoundingClientRect().top < 140) cur = i; });
+    tocLinks.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  }
+  addEventListener('scroll', spy, {passive:true});
+
+  var start = 'ar';
+  try{ start = localStorage.getItem('nesta-lang') || start; }catch(e){}
+  if(location.hash === '#en' || location.hash === '#ar') start = location.hash.slice(1);
+  setLang(start);
+})();
+</script>
 </body>
 </html>
