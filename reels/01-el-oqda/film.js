@@ -31,23 +31,23 @@ const HITS = [
   [B(0.05), 'tag1', 'pop', { pitch: 'E5' }], [B(0.45), 'tag2', 'pop', { pitch: 'G5' }], [B(0.85), 'tag3', 'pop', { pitch: 'A5' }],
   [B(1.25), 'tag4', 'pop', { pitch: 'B5' }], [B(1.65), 'tag5', 'pop', { pitch: 'D6' }],
   [B(2.18), 'fahoo dah', 'thud'],
-  [B(3.37), 'dive', 'whoosh', { len: 0.5, from: 500, to: 2600 }],
+  [B(3.27), 'pan to pile', 'whoosh', { len: 0.45, from: 700, to: 2000, pan: -0.4 }],
   ...Array.from({ length: 10 }, (_, i) => [B(3.42 + i * 0.18), 'bubble', 'tick']),
   [B(5.25), 'x20', 'click'],
   [B(5.7), 'reply1', 'type', { len: 0.4, n: 5 }], [B(6.4), 'reply2', 'type', { len: 0.4, n: 5 }], [B(7.05), 'reply3', 'type', { len: 0.35, n: 4 }],
-  [B(7.95), 'whip up', 'whoosh', { len: 0.35, from: 2400, to: 700 }],
+  [B(7.82), 'pan back', 'whoosh', { len: 0.4, from: 2000, to: 700, pan: 0.4 }],
   [B(8.0), 'nesta node lands', 'impact'],
   [B(8.7), 'pull', 'boing', { pitch: 'A3', to: 'E4' }],
   [B(10.3), 'chat card', 'whoosh', { len: 0.4 }],
   [B(10.9), 'bot reply', 'blip', { pitch: 'E6' }],
   [B(12.45), 'lane 1', 'tok', { pitch: 'E5' }], [B(12.75), 'lane 2', 'tok', { pitch: 'G5' }], [B(13.05), 'lane 3', 'tok', { pitch: 'B5' }],
   [B(14.35), 'snip', 'click'],
-  [B(15.15), 'pan', 'whoosh', { len: 0.5, from: 800, to: 2000 }],
+  [B(15.42), 'pan to cards', 'whoosh', { len: 0.5, from: 800, to: 2000, pan: 0.4 }],
   [B(15.9), 'calendar cell', 'bell', { pitch: 'E6' }],
   [B(16.9), 'sheet row', 'type', { len: 0.6, n: 7 }],
   [B(17.96), 'stamp', 'thud'],
-  [B(18.75), 'flip', 'whoosh', { len: 0.3, from: 1800, to: 600 }],
-  [B(19.72), 'eid', 'whoosh', { len: 0.25 }], [B(20.61), 'match', 'whoosh', { len: 0.25 }],
+  [B(18.84), 'pan to night', 'whoosh', { len: 0.4, from: 1800, to: 600, pan: 0.4 }],
+  [B(19.58), 'eid', 'whoosh', { len: 0.3, pan: 0.4 }], [B(20.46), 'match', 'whoosh', { len: 0.3, pan: 0.4 }], [B(22.22), 'to 24/7', 'whoosh', { len: 0.3, pan: 0.4 }],
   [B(22.36), '24/7', 'impact'],
   [B(23.3), 'gather', 'riser', { len: 0.4 }],
   [B(23.7), 'logo', 'bell', { pitch: 'B5' }],
@@ -195,6 +195,7 @@ function drawKnotProjectOnly(i, v) {
 // ---------------------------------------------------------------- shared bits
 let GRAIN = [], PLATE = null;
 function bg(ctx, c1 = C.bg, c2 = C.bg2) {
+  return;   // one room: the world background is painted once per frame from the camera position
   const g = ctx.createRadialGradient(W * 0.5, H * 0.42, 80, W * 0.5, H * 0.5, H * 0.75);
   g.addColorStop(0, c2); g.addColorStop(1, c1); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
 }
@@ -249,7 +250,7 @@ function sceneKnot(ctx, t) {
   const sq = 0.06 * wobble(t - 2.18, 2.6, 5);
   ctx.save();
   // dive: log zoom toward a thread point
-  const dz = E.inCubic(prog(t, 2.95, 3.37));
+  const dz = 0;   // no dive: the camera travels through the room instead
   const target = knotPoint(2, 20, v);
   const z = Math.pow(9, dz);
   ctx.translate(target[0], target[1]); ctx.scale(z * (1 + sq), z * (1 - sq)); ctx.translate(-target[0], -target[1]);
@@ -285,7 +286,7 @@ function sceneDup(ctx, t) {
   // giant rope (the thread we dived into), slowly tightening
   const tight = E.inOutSine(prog(t, 5.5, 7.9));
   const pts = Array.from({ length: 40 }, (_, k) => {
-    const x = lerp(-200, W + 200, k / 39);
+    const x = lerp(-200, W + 700, k / 39);
     return [x, H * 0.62 + Math.sin(k * 0.45 + t * 1.3) * (90 - 60 * tight) + (x - W / 2) * -0.45];
   });
   rope(ctx, pts, 70 + 10 * tight);
@@ -350,7 +351,7 @@ const LANES = ['الأسعار', 'المواعيد', 'المنيو'];
 function sceneNesta(ctx, t, IMG) {
   bg(ctx);
   // camera pan along the lanes to the cards (15.1 – 15.7)
-  const pan = E.inOutCubic(prog(t, 15.1, 15.75));
+  const pan = 0;   // the room camera does this move now
   const v = nestaView(t);
   ctx.save(); ctx.translate(-pan * W * 1.05, 0);
   // shake on the landing
@@ -400,8 +401,6 @@ function sceneNesta(ctx, t, IMG) {
   chatCard(ctx, t);
   sup(ctx, t, VO.H1, { y: SAFE.y + 130, size: 86, tOut: 15.05, hl: { 'نشاطك': C.mint } });
   sup(ctx, t, VO.H2, { y: H - 560, size: 80, tOut: 15.05, hl: { 'بيألّف': C.amber } });
-  sup(ctx, t, VO.I1, { y: SAFE.y + 120, size: 86, tOut: 18.6, hl: { 'التقويم،': C.mint } });
-  sup(ctx, t, VO.I2, { y: SAFE.y + 225, size: 86, tOut: 18.6, hl: { 'الشيت…': C.mint } });
 }
 function drawKnotProjectOnlyLane(li, v) {   // start (right) point of lane li at untangle 1
   const cy = Math.cos(v.yaw), sy = Math.sin(v.yaw), cp = Math.cos(v.pitch), spi = Math.sin(v.pitch);
@@ -466,21 +465,22 @@ function cardsWorld(ctx, t, ox) {
     txt(ctx, 'لوحده!', 0, 30, 120, C.mint, { face: D });
     ctx.restore();
   }
+  sup(ctx, t, VO.I1, { y: SAFE.y + 120, size: 86, tOut: 18.9, hl: { 'التقويم،': C.mint } });
+  sup(ctx, t, VO.I2, { y: SAFE.y + 225, size: 86, tOut: 18.9, hl: { 'الشيت…': C.mint } });
   ctx.restore();
 }
 
 // ================================================================ S6  any time (19.0 – 23.2)
 function clothesline(ctx, t, y, sag = 90) {
-  const pts = Array.from({ length: 40 }, (_, k) => { const x = lerp(-60, W + 60, k / 39); return [x, y + Math.sin((k / 39) * Math.PI) * sag + Math.sin(t * 2 + k * 0.3) * 6]; });
+  const pts = Array.from({ length: 40 }, (_, k) => { const x = lerp(-0.2 * W, 1.2 * W, k / 39); return [x, y + Math.sin((k / 39) * Math.PI) * sag + Math.sin(t * 2 + k * 0.3) * 6]; });
   rope(ctx, pts, 14); return pts;
 }
 function vNight(ctx, t) {
-  fill(ctx, C.sky);
-  const g = ctx.createRadialGradient(W * 0.72, H * 0.27, 40, W * 0.72, H * 0.27, 700); g.addColorStop(0, '#2A2550'); g.addColorStop(1, C.sky); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+  const g = ctx.createRadialGradient(W * 0.72, H * 0.27, 40, W * 0.72, H * 0.27, 700); g.addColorStop(0, 'rgba(42,37,80,0.9)'); g.addColorStop(1, 'rgba(18,15,42,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   for (let i = 0; i < 40; i++) { const tw = 0.5 + 0.5 * Math.sin(t * 3 + i); ctx.fillStyle = `rgba(244,239,230,${0.25 + 0.5 * tw * hash01(i, 8)})`; ctx.beginPath(); ctx.arc(hash01(i, 1) * W, hash01(i, 2) * H * 0.7, 2 + 2 * hash01(i, 3), 0, TAU); ctx.fill(); }
   // crescent
-  ctx.save(); ctx.beginPath(); ctx.arc(W * 0.72, H * 0.27, 120, 0, TAU); ctx.fillStyle = '#F4EFE6'; ctx.fill();
-  ctx.globalCompositeOperation = 'source-atop'; ctx.beginPath(); ctx.arc(W * 0.72 + 55, H * 0.27 - 30, 110, 0, TAU); ctx.fillStyle = '#2A2550'; ctx.fill(); ctx.restore();
+  ctx.save(); ctx.beginPath(); ctx.rect(-W, -H, 3 * W, 3 * H); ctx.arc(W * 0.72 + 55, H * 0.27 - 30, 110, 0, TAU); ctx.clip('evenodd');
+  ctx.beginPath(); ctx.arc(W * 0.72, H * 0.27, 120, 0, TAU); ctx.fillStyle = '#F4EFE6'; ctx.fill(); ctx.restore();
   const L = clothesline(ctx, t, H * 0.5);
   [10, 20, 30].forEach((k, i) => { const p = L[k]; const sw = Math.sin(t * 2.4 + i) * 0.12; bubble(ctx, p[0], p[1] + 120, 270, ['+1', 'حجز', 'أوردر'][i], { inc: false, size: 54, bgc: C.mint, fg: '#06281C', rot: sw }); });
   txtL(ctx, '3:14 AM', W / 2, H * 0.78, 64, 'rgba(244,239,230,0.6)');
@@ -559,13 +559,12 @@ function logoTile(ctx, IMG, x, y, s, r = 0.2) {
 }
 function sceneEnd(ctx, t, IMG) {
   const nav = E.inOutCubic(prog(t, 23.4, 24.4));
-  ctx.fillStyle = mix(C.bg, C.navy, nav); ctx.fillRect(0, 0, W, H);
   const g = ctx.createRadialGradient(W / 2, H * 0.42, 50, W / 2, H * 0.45, H * 0.7); g.addColorStop(0, `rgba(65,236,174,${0.08 * nav})`); g.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
   // threads converge into the tile
-  const conv = E.inCubic(prog(t, 23.2, 23.8));
-  if (conv < 1) for (let i = 0; i < 8; i++) {
+  const conv = E.inCubic(prog(t, 23.3, 23.8));
+  if (conv < 1 && t > 23.3) for (let i = 0; i < 8; i++) {
     const a0 = (i / 8) * TAU + 0.3;
-    const pts = Array.from({ length: 30 }, (_, k) => { const s = k / 29; const r = lerp(1300, 0, conv) * (1 - s * 0.6) + 60; return [W / 2 + Math.cos(a0 + s * 2.4) * r, H * 0.45 + Math.sin(a0 + s * 2.4) * r]; });
+    const pts = Array.from({ length: 30 }, (_, k) => { const s = k / 29; const r = lerp(760, 0, conv) * (1 - s * 0.6) + 60; return [W / 2 + Math.cos(a0 + s * 2.4) * r, H * 0.45 + Math.sin(a0 + s * 2.4) * r]; });
     rope(ctx, pts, 14);
   }
   // logo tile irises open, then lifts to the end-card position
@@ -606,6 +605,81 @@ function sceneEnd(ctx, t, IMG) {
   if (kq > 0.001) pill(ctx, W / 2, H * 0.5 + 700, 'جرّبه قبل ما تدفع', { k: kq, bgc: 'rgba(244,239,230,0.12)', fg: C.cream, size: 44, rot: -0.03 });
 }
 
+
+// ================================================================ the room: one world, one camera
+// Every shot is a spot in the same room, SP apart. The camera dollies between them (pan + slight
+// pull-back + tilt), with a floor and foreground fibres in parallax so it reads as a real move.
+const SP = W * 1.05;
+const CAM = [[0, 0], [3.05, 0], [3.45, -1], [7.62, -1], [7.98, 0], [15.1, 0], [15.75, 1], [18.62, 1], [19.04, 2], [19.4, 2],
+  [19.76, 3], [20.28, 3], [20.64, 4], [22.04, 4], [22.4, 5], [22.98, 5], [23.45, 6]];
+const ROOMCOL = { '-1': '#211829', 0: C.bg, 1: '#1D1627', 2: C.sky, 3: C.plum, 4: C.teal, 5: C.bg, 6: C.navy };
+function camAt(t) {
+  let i = 0; while (i < CAM.length - 1 && t >= CAM[i + 1][0]) i++;
+  if (i >= CAM.length - 1) return { f: CAM[i][1], m: 0, dir: 0 };
+  const [t0, a] = CAM[i], [t1, b] = CAM[i + 1];
+  if (a === b) return { f: a, m: 0, dir: 0 };
+  const p = clamp((t - t0) / (t1 - t0));
+  return { f: lerp(a, b, E.inOutCubic(p)), m: Math.sin(Math.PI * p), dir: Math.sign(b - a) };
+}
+function roomColor(f) {
+  const a = Math.floor(f), b = Math.ceil(f);
+  return mix(ROOMCOL[a] || C.bg, ROOMCOL[b] || C.bg, f - a);
+}
+function stationDrawer(i, t, IMG) {
+  switch (i) {
+    case -1: return t > 2.9 && t < 8.1 ? () => sceneDup(M_CTX, t) : null;
+    case 0: return () => (t < 3.37 ? sceneKnot(M_CTX, t) : sceneNesta(M_CTX, t, IMG));
+    case 2: return t > 18.4 && t < 19.9 ? () => { vNight(M_CTX, t); sup(M_CTX, t, VO.K1, { y: SAFE.y + 140, size: 100, tOut: 19.6 }); } : null;
+    case 3: return t > 19.3 && t < 20.9 ? () => { vEid(M_CTX, t); sup(M_CTX, t, VO.K2, { y: SAFE.y + 140, size: 100, tOut: 20.5 }); } : null;
+    case 4: return t > 20.1 && t < 22.6 ? () => { vMatch(M_CTX, t); sup(M_CTX, t, VO.L1, { y: SAFE.y + 130, size: 84, tOut: 22.3 }); } : null;
+    case 5: return t > 21.9 && t < 23.7 ? () => { v247(M_CTX, t); sup(M_CTX, t, VO.M1, { y: H * 0.52 + 300, size: 120, color: C.cream, tOut: 23.15, stag: 0.01 }); } : null;
+    case 6: return t > 22.8 ? () => sceneEnd(M_CTX, t, IMG) : null;
+  }
+  return null;
+}
+let M_CTX = null;
+function room(ctx, t, IMG) {
+  M_CTX = ctx;
+  const cam = camAt(t), camPx = cam.f * SP;
+  // walls: colour follows the camera; a soft light pool stays with the lens
+  ctx.fillStyle = roomColor(cam.f); ctx.fillRect(0, 0, W, H);
+  const lp = ctx.createRadialGradient(W * 0.5, H * 0.42, 80, W * 0.5, H * 0.5, H * 0.75);
+  lp.addColorStop(0, 'rgba(255,240,225,0.06)'); lp.addColorStop(1, 'rgba(0,0,0,0)'); ctx.fillStyle = lp; ctx.fillRect(0, 0, W, H);
+  // floor in perspective (parallax: near edge moves 1:1, horizon slower)
+  const hz = H * 0.83;
+  const fg = ctx.createLinearGradient(0, hz, 0, H); fg.addColorStop(0, 'rgba(255,255,255,0.035)'); fg.addColorStop(1, 'rgba(0,0,0,0.25)');
+  ctx.fillStyle = fg; ctx.fillRect(0, hz, W, H - hz);
+  ctx.save(); ctx.strokeStyle = 'rgba(255,255,255,0.05)'; ctx.lineWidth = 2;
+  for (let k = -12; k <= 60; k++) {
+    const wx = k * 240 - camPx; if (wx < -2 * W || wx > 3 * W) continue;
+    ctx.beginPath(); ctx.moveTo(W / 2 + (wx - W / 2) * 0.3, hz); ctx.lineTo(wx, H); ctx.stroke();
+  }
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)'; ctx.beginPath(); ctx.moveTo(0, hz); ctx.lineTo(W, hz); ctx.stroke();
+  ctx.restore();
+  // the stations, through a camera that pulls back and tilts a touch while it travels
+  const z = 1 - 0.07 * cam.m, rot = 0.012 * cam.dir * cam.m;
+  for (let i = -1; i <= 6; i++) {
+    const dx = i * SP - camPx;
+    const reach = i === 0 ? dx > -2.4 * W && dx < 1.3 * W : Math.abs(dx) < 1.3 * W;
+    if (!reach) continue;
+    const fn = stationDrawer(i, t, IMG); if (!fn) continue;
+    ctx.save();
+    ctx.translate(W / 2, H / 2); ctx.rotate(rot); ctx.scale(z, z); ctx.translate(-W / 2, -H / 2 - 18 * cam.m);
+    ctx.translate(dx, 0);
+    fn();
+    ctx.restore();
+  }
+  // foreground fibres between stations: closer than everything, so they cross fast and soft
+  ctx.save(); ctx.globalAlpha = 0.22;
+  for (let i = -1; i <= 6; i++) {
+    const sx = W / 2 + ((i + 0.5) * SP - camPx) * 1.7;
+    if (sx < -400 || sx > W + 400) continue;
+    const pts = Array.from({ length: 24 }, (_, k) => [sx + Math.sin(k * 0.35 + i) * 90, lerp(-80, H + 80, k / 23)]);
+    rope(ctx, pts, 34, i % 2 ? C.thread : C.mint);
+  }
+  ctx.restore();
+}
+
 // ================================================================ film
 M.film({
   fonts: [font(100, 700, D), font(40, 700, UI), font(40, 600, UI), font(40, 500, UI)],
@@ -629,26 +703,7 @@ M.film({
       x.putImageData(im, 0, 0); GRAIN.push(c);
     }
   },
-  draw(ctx, u, t, IMG) {
-    if (t < 3.37) sceneKnot(ctx, t);
-    else if (t < 7.75) sceneDup(ctx, t);
-    else if (t < 7.98) {   // whip up: S2 leaves downward while S3 drops in from the top
-      const p = E.inOutCubic(prog(t, 7.75, 7.98));
-      ctx.save(); ctx.translate(0, p * H); sceneDup(ctx, t); ctx.restore();
-      ctx.save(); ctx.translate(0, -(1 - p) * H); sceneNesta(ctx, t, IMG); ctx.restore();
-    }
-    else if (t < 18.72) sceneNesta(ctx, t, IMG);
-    else if (t < 19.03) {   // card flip
-      const p = prog(t, 18.72, 19.03);
-      const sx = Math.abs(Math.cos(p * Math.PI));
-      fill(ctx, C.sky);
-      ctx.save(); ctx.translate(W / 2, H / 2); ctx.scale(Math.max(0.001, sx), 1 - 0.06 * Math.sin(p * Math.PI)); ctx.translate(-W / 2, -H / 2);
-      if (p < 0.5) sceneNesta(ctx, t, IMG); else sceneAnytime(ctx, t);
-      ctx.restore();
-    }
-    else if (t < 23.2) sceneAnytime(ctx, t);
-    else sceneEnd(ctx, t, IMG);
-  },
+  draw(ctx, u, t, IMG) { room(ctx, t, IMG); },
   post(ctx, u, t) {
     // paper grain + soft vignette: keeps it from looking like a clean template
     const g = GRAIN[Math.floor(t * 24) % 4];
