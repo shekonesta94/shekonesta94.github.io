@@ -19,7 +19,7 @@ const sp = (t, t0, cfg = SPRING.snappy) => spring(t - t0, cfg);
 const P = {
   counter: [0, -270], bubble: [40, 190], rival: [-1000, 520], clock: [-2200, 380], text: [-2330, 900],
   reply: [-30, 440], cards: [760, 280], cal: [1500, 140], sheet: [2050, 400], bell: [2560, 150],
-  cup: [3200, 380], calm: [3200, 60], pill: [3200, -420], logo: [3200, -860],
+  cup: [3650, 380], calm: [3650, 60], pill: [3650, -420], logo: [3650, -860],
 };
 
 // ---------------------------------------------------------------- hits
@@ -58,8 +58,8 @@ const CAMK = [
   [0, 0, -90, 1.4], [3.9, 0, -70, 1.48], [5.3, -860, 380, 1.1], [6.0, -1000, 430, 1.1], [8.6, -2150, 420, 1.1],
   [9.95, -2220, 440, 1.12], [10.8, -2330, 840, 1.1], [13.5, -2330, 870, 1.15], [14.0, 0, 260, 1.12], [15.6, 30, 290, 1.17],
   [16.3, 780, 270, 1.2], [17.35, 810, 270, 1.22], [17.9, 1500, 170, 1.25], [18.3, 1520, 180, 1.27], [18.8, 2050, 390, 1.2],
-  [19.35, 2070, 390, 1.22], [19.85, 2560, 180, 1.25], [20.6, 2580, 180, 1.27], [21.2, 3200, 150, 1.2], [23.4, 3200, 170, 1.25],
-  [24.2, 3200, -440, 1.0], [30, 3200, -430, 1.03],
+  [19.35, 2070, 390, 1.22], [19.85, 2560, 180, 1.25], [20.6, 2580, 180, 1.27], [21.3, 3650, 150, 1.2], [23.4, 3650, 170, 1.25],
+  [24.2, 3650, -440, 1.0], [30, 3650, -430, 1.03],
 ];
 function camera(t) {
   let i = 0; while (i < CAMK.length - 2 && t >= CAMK[i + 1][0]) i++;
@@ -111,7 +111,7 @@ const STROKES = [
   { pts: wave([P.cards[0] + 260, P.cards[1] - 120], [P.cal[0] - 330, P.cal[1] + 20], 30, 50, 1), t0: 16.95, t1: 17.8, col: C.mint, w: 12 },
   { pts: wave([P.cal[0] + 330, P.cal[1] + 60], [P.sheet[0] - 380, P.sheet[1] - 30], 30, 40, 1), t0: 18.15, t1: 18.7, col: C.mint, w: 12 },
   { pts: wave([P.sheet[0] + 380, P.sheet[1] - 40], [P.bell[0] - 200, P.bell[1] + 60], 30, 50, 1), t0: 19.25, t1: 19.75, col: C.mint, w: 12 },
-  { pts: wave([P.bell[0] + 200, P.bell[1] + 60], [P.cup[0] - 260, P.cup[1] - 20], 30, 60, 1), t0: 20.55, t1: 21.05, col: C.mint, w: 12 },
+  { pts: [...wave([P.bell[0] + 200, P.bell[1] + 60], [P.cup[0] - 500, P.cup[1] + 480], 30, 60, 1), ...line([P.cup[0] - 500, P.cup[1] + 480], [P.cup[0] - 10, P.cup[1] + 140], 16, -60)], t0: 20.55, t1: 21.2, col: C.mint, w: 12 },
   { pts: [...wave([P.cup[0] + 20, P.cup[1] - 210], [P.pill[0] + 330, P.pill[1] + 40], 40, 70, 2.5), ...rrPath(P.pill[0], P.pill[1], 760, 180, 90)], t0: 23.45, t1: 24.4, col: C.mint, w: 12 },
 ];
 for (const s of STROKES) {
@@ -321,8 +321,7 @@ function bell(ctx, t) {
 }
 function cup(ctx, t) {
   const [x, y] = P.cup; const d = drop(t, T(20.74) - 0.1);
-  if (!card(ctx, x, y, 360, 300, { r: 40, fill: 'rgba(0,0,0,0)', d })) return;
-  ctx.restore();
+  if (d.a <= 0) return;
   ctx.save(); ctx.translate(x, y); ctx.scale(d.s, d.s);
   shadowed(ctx, d.lift, () => { ctx.fillStyle = C.paper; ctx.beginPath(); ctx.ellipse(0, 120, 230, 50, 0, 0, TAU); ctx.fill(); });
   shadowed(ctx, d.lift, () => { ctx.fillStyle = C.coral; ctx.beginPath(); ctx.moveTo(-130, -60); ctx.lineTo(130, -60); ctx.lineTo(100, 110); ctx.quadraticCurveTo(0, 140, -100, 110); ctx.closePath(); ctx.fill(); });
@@ -355,17 +354,23 @@ function ending(ctx, t, IMG) {
     ctx.fillStyle = 'rgba(6,40,28,0.3)'; ctx.fillRect(110, -45, 3, 90);
     ctx.restore();
   }
+  // headline + logo sticker as one group, centred: the sticker sits a short gap from the words
+  if (!HEAD) {
+    ctx.save(); ctx.font = font(130, 400, D); const w = ctx.measureText('ابعت ديمو').width; ctx.restore();
+    const stick = 260 + 32, gap = 44, G = stick + gap + w, left = px - G / 2;
+    HEAD = { stickerX: left + stick / 2, textX: left + stick + gap + w / 2 };
+  }
   // the logo as a sticker slapped onto the table
   const d = drop(t, 24.15);
   if (IMG.only && d.a > 0) {
-    const [lx, ly] = P.logo; const s = 300;
-    ctx.save(); ctx.translate(lx - 370, ly + 60); ctx.rotate(-0.09); ctx.scale(d.s, d.s); ctx.globalAlpha = d.a;
+    const [, ly] = P.logo; const s = 260;
+    ctx.save(); ctx.translate(HEAD.stickerX, ly + 60); ctx.rotate(-0.09); ctx.scale(d.s, d.s); ctx.globalAlpha = d.a;
     shadowed(ctx, d.lift, () => { ctx.fillStyle = '#FFFFFF'; rrect(ctx, -s / 2 - 16, -s / 2 - 16, s + 32, s + 32, s * 0.22 + 10); ctx.fill(); });
     ctx.save(); rrect(ctx, -s / 2, -s / 2, s, s, s * 0.2); ctx.clip(); ctx.drawImage(IMG.only, 609, 304, 1182, 1182, -s / 2, -s / 2, s, s); ctx.restore();
     ctx.restore();
   }
-  write(ctx, 'ابعت ديمو', px + 180, P.logo[1] + 30, 130, C.ink, t, 23.75, 0.5);
-  write(ctx, 'على واتساب', px + 180, P.logo[1] + 170, 84, C.coral, t, 24.6, 0.45);
+  write(ctx, 'ابعت ديمو', HEAD.textX, P.logo[1] + 30, 130, C.ink, t, 23.75, 0.5);
+  write(ctx, 'على واتساب', HEAD.textX, P.logo[1] + 170, 84, C.coral, t, 24.6, 0.45);
   write(ctx, 'وجرّب تسابقه!', px - 130, py + 215, 90, C.ink, t, T(25.39), 0.5, { rot: -0.03 });
   // a stopwatch drops in for the race
   const ds = drop(t, 27.3);
@@ -380,7 +385,7 @@ function ending(ctx, t, IMG) {
 }
 
 // ---------------------------------------------------------------- frame
-let PAPER = null, GRAIN = [];
+let PAPER = null, GRAIN = [], HEAD = null;
 function table(ctx, cam) {
   // the table surface lives in world space, so its fibres travel with every camera move
   ctx.save(); ctx.fillStyle = PAPER; const r = 9000; ctx.fillRect(cam.x - r, cam.y - r, 2 * r, 2 * r); ctx.restore();
