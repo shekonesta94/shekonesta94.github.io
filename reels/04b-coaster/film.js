@@ -225,7 +225,7 @@ function vault(ctx, t) {
   for (const side of [-1, 1]) {
     const cc = add(c, mul(q.r, side * open * 8));
     const pts2 = []; for (let i = 0; i <= 24; i++) { const th = side > 0 ? -Math.PI / 2 + (i / 24) * Math.PI : Math.PI / 2 + (i / 24) * Math.PI; const p = proj(add(cc, add(mul(q.r, Math.cos(th) * 6.6), mul(q.u, Math.sin(th) * 6.6)))); if (p) pts2.push(p); }
-    if (pts2.length > 3) { const g = ctx.createLinearGradient(pts2[0][0], 0, pts2[12][0], 0); g.addColorStop(0, '#C9D2DE'); g.addColorStop(1, '#7E8A9C'); ctx.fillStyle = g; pathPts(ctx, pts2); ctx.closePath(); ctx.fill(); ctx.strokeStyle = '#5A6476'; ctx.lineWidth = Math.max(1, 0.25 * F / P[2]); ctx.stroke(); }
+    if (pts2.length > 12) { const g = ctx.createLinearGradient(pts2[0][0], 0, pts2[Math.floor(pts2.length / 2)][0] + 0.01, 0); g.addColorStop(0, '#C9D2DE'); g.addColorStop(1, '#7E8A9C'); ctx.fillStyle = g; pathPts(ctx, pts2); ctx.closePath(); ctx.fill(); ctx.strokeStyle = '#5A6476'; ctx.lineWidth = Math.max(1, 0.25 * F / P[2]); ctx.stroke(); }
   }
   const rot = t * 2;
   for (let i = 0; i < 3; i++) { const a = rot + i * Math.PI / 3; const p0 = proj(add(c, add(mul(q.r, Math.cos(a) * 5 + (Math.cos(a) > 0 ? 1 : -1) * open * 8), mul(q.u, Math.sin(a) * 5)))); const p1 = proj(add(c, add(mul(q.r, -Math.cos(a) * 5 + (-Math.cos(a) > 0 ? 1 : -1) * open * 8), mul(q.u, -Math.sin(a) * 5)))); if (p0 && p1 && open < 0.95) { ctx.strokeStyle = '#4A5466'; ctx.lineWidth = Math.max(1, 0.5 * F / P[2]); ctx.beginPath(); ctx.moveTo(p0[0], p0[1]); ctx.lineTo(p1[0], p1[1]); ctx.stroke(); } }
