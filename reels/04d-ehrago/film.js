@@ -153,7 +153,7 @@ function phoneBack(ctx, pw, ph, t) {
   const g = ctx.createLinearGradient(0, 0, pw, ph); g.addColorStop(0, '#0F1E33'); g.addColorStop(1, '#0F1E33');
   ctx.fillStyle = g; rrect(ctx, 0, 0, pw, ph, 54); ctx.fill();
   ctx.strokeStyle = 'rgba(65,236,174,0.6)'; ctx.lineWidth = 4; rrect(ctx, 18, 18, pw - 36, ph - 36, 42); ctx.stroke();
-  if (LOGO) { const lw = pw - 60, lh = lw * 520 / 1640; ctx.drawImage(LOGO, 0, 0, 1640, 520, 30, ph * 0.5 - lh / 2, lw, lh); }
+  if (LOGO) { const lw = pw - 60, lh = lw * 690 / 1790; ctx.drawImage(LOGO, 0, 0, 1790, 690, 30, ph * 0.5 - lh / 2, lw, lh); }
   const sw = ((t * 0.4) % 1.6) - 0.3; const sg = ctx.createLinearGradient(sw * pw - 120, 0, sw * pw + 120, ph); sg.addColorStop(0, 'rgba(255,255,255,0)'); sg.addColorStop(0.5, 'rgba(255,255,255,0.08)'); sg.addColorStop(1, 'rgba(255,255,255,0)');
   ctx.fillStyle = sg; rrect(ctx, 0, 0, pw, ph, 54); ctx.fill();
 }
@@ -376,7 +376,7 @@ M.film({
   samples: 6,
   init(ctx, IMG) {
     DUST = Array.from({ length: 50 }, (_, i) => ({ x: hash01(i, 1) * W, y: hash01(i, 2) * H, v: 0.3 + hash01(i, 3), r: 1 + 2.5 * hash01(i, 4), a: 0.08 + 0.2 * hash01(i, 5), p: hash01(i, 6) * TAU }));
-    if (IMG.name) { const c = document.createElement('canvas'); c.width = 1640; c.height = 520; c.getContext('2d').drawImage(IMG.name, 380, 640, 1640, 520, 0, 0, 1640, 520); LOGO = c; }
+    if (IMG.name) { const c = document.createElement('canvas'); c.width = 1790; c.height = 690; c.getContext("2d").drawImage(IMG.name, 300, 540, 1790, 690, 0, 0, 1790, 690); LOGO = c; }
   },
   draw(ctx, u, t) { draw(ctx, t); },
   post(ctx, u, t) {

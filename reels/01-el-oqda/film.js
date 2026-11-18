@@ -576,7 +576,7 @@ function sceneEnd(ctx, t, IMG) {
   // end card: the real lockup wipes in behind a thread
   if (t >= 25.3 && IMG.name) {
     const wp = E.inOutCubic(prog(t, 25.3, 25.9));
-    const lw = 960, lh = lw * (520 / 1640), ly = SAFE.y + 230 - lh / 2;
+    const lw = 960, lh = lw * (690 / 1790), ly = SAFE.y + 230 - lh / 2;
     ctx.save(); ctx.beginPath(); ctx.rect(W / 2 + lw / 2 - lw * wp, ly - 20, lw * wp + 40, lh + 40); ctx.clip();
     ctx.drawImage(PLATE || IMG.name, 0, 0, PLATE ? PLATE.width : 1, PLATE ? PLATE.height : 1, W / 2 - lw / 2, ly, lw, lh);
     ctx.restore();
@@ -688,13 +688,13 @@ M.film({
   samples: 6,
   init(_, IMG) {
     if (IMG.name) {   // logo lockup crop with feathered edges so no box shows on the navy
-      const c = document.createElement('canvas'); c.width = 1640; c.height = 520; const x = c.getContext('2d');
-      x.drawImage(IMG.name, 380, 640, 1640, 520, 0, 0, 1640, 520);
+      const c = document.createElement('canvas'); c.width = 1790; c.height = 690; const x = c.getContext('2d');
+      x.drawImage(IMG.name, 300, 540, 1790, 690, 0, 0, 1790, 690);
       x.globalCompositeOperation = 'destination-in';
-      const gx = x.createLinearGradient(0, 0, 1640, 0); gx.addColorStop(0, 'rgba(0,0,0,0)'); gx.addColorStop(0.04, '#000'); gx.addColorStop(0.96, '#000'); gx.addColorStop(1, 'rgba(0,0,0,0)');
-      x.fillStyle = gx; x.fillRect(0, 0, 1640, 520);
-      const gy = x.createLinearGradient(0, 0, 0, 520); gy.addColorStop(0, 'rgba(0,0,0,0)'); gy.addColorStop(0.12, '#000'); gy.addColorStop(0.88, '#000'); gy.addColorStop(1, 'rgba(0,0,0,0)');
-      x.fillStyle = gy; x.fillRect(0, 0, 1640, 520); PLATE = c;
+      const gx = x.createLinearGradient(0, 0, 1790, 0); gx.addColorStop(0, 'rgba(0,0,0,0)'); gx.addColorStop(0.04, '#000'); gx.addColorStop(0.96, '#000'); gx.addColorStop(1, 'rgba(0,0,0,0)');
+      x.fillStyle = gx; x.fillRect(0, 0, 1790, 690);
+      const gy = x.createLinearGradient(0, 0, 0, 690); gy.addColorStop(0, 'rgba(0,0,0,0)'); gy.addColorStop(0.12, '#000'); gy.addColorStop(0.88, '#000'); gy.addColorStop(1, 'rgba(0,0,0,0)');
+      x.fillStyle = gy; x.fillRect(0, 0, 1790, 690); PLATE = c;
     }
     for (let g = 0; g < 4; g++) {
       const c = document.createElement('canvas'); c.width = 270; c.height = 480; const x = c.getContext('2d');

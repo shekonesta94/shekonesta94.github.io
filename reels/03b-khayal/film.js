@@ -364,7 +364,7 @@ function finale(ctx, t, IMG) {
   ctx.fillStyle = C.wood; rrect(ctx, -w / 2 - 34, -h / 2 - 34, w + 68, h + 68, 26); ctx.fill(); ctx.shadowColor = 'transparent';
   ctx.strokeStyle = C.gold; ctx.lineWidth = 6; rrect(ctx, -w / 2 - 18, -h / 2 - 18, w + 36, h + 36, 18); ctx.stroke();
   ctx.fillStyle = C.navy; ctx.fillRect(-w / 2, -h / 2, w, h);
-  if (IMG.name) ctx.drawImage(IMG.name, 380, 640, 1640, 520, -w / 2 + 20, -h / 2 + 30, w - 40, (w - 40) * 520 / 1640);
+  if (IMG.name) ctx.drawImage(IMG.name, 300, 540, 1790, 690, -w / 2 + 20, -h / 2 + 7, w - 40, (w - 40) * 690 / 1790);
   const shine = ((t - V.a8 - 1.2) * 0.4) % 1.5 - 0.25;
   if (t > V.a8 + 1.2) { const g = ctx.createLinearGradient(-w / 2 + shine * w - 100, 0, -w / 2 + shine * w + 100, 0); g.addColorStop(0, 'rgba(255,255,255,0)'); g.addColorStop(0.5, 'rgba(255,255,255,0.12)'); g.addColorStop(1, 'rgba(255,255,255,0)'); ctx.fillStyle = g; ctx.fillRect(-w / 2, -h / 2, w, h); }
   ctx.restore();
