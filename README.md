@@ -9,12 +9,14 @@ Required by Google Cloud to switch OAuth apps to **In production** (stops Google
 | Homepage | https://shekonesta94.github.io |
 | Privacy Policy | https://shekonesta94.github.io/privacy.html |
 | Terms & Conditions (Nesta Automation, AR + EN) | https://shekonesta94.github.io/terms/ |
+| Data Deletion (AR + EN, used by the Meta app) | https://shekonesta94.github.io/data-deletion/ |
 
 ## Files
 | File | Purpose |
 |---|---|
 | `index.html` | Homepage (business name, what the app does, contact) |
-| `privacy.html` | Privacy policy covering Google Drive + Google Sheets access |
+| `privacy.html` | Privacy policy (AR + EN): Nesta WhatsApp/Meta app + Google Drive/Sheets access (Limited Use section kept for Google OAuth) |
+| `data-deletion/index.html` | How users request deletion of their data (Meta app requirement) |
 | `README.md` | This guide |
 
 ## Where these URLs are used

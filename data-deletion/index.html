@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>حذف البيانات | Data Deletion — Nesta Automation</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="طريقة طلب حذف بياناتك من Nesta Automation - How to request deletion of your data from Nesta Automation">
+<link rel="icon" type="image/png" href="../assets/nesta-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: calm reading page — brand header, sticky contents list beside one paper column. No motion beyond a thin reading-progress line. */
+:root{
+  --navy:#101C2E; --navy-2:#16253B; --navy-3:#0B1626; --line-n:#24364F;
+  --paper:#F7F9FB; --ground:#E9EEF2; --line:#D8E0E8;
+  --ink:#16233A; --muted:#5A667B; --snow:#EAF0F5; --snow-mut:#A3B1C2;
+  --mint:#4BE3A8; --mint-deep:#0C7A55; --mint-soft:#E2F6EE;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --f-body:"IBM Plex Sans Arabic","Readex Pro","Segoe UI",Tahoma,sans-serif;
+  --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.9;-webkit-font-smoothing:antialiased}
+html[lang="en"] body{font-size:16.5px;line-height:1.8}
+.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
+:focus-visible{outline:2px solid var(--mint-deep);outline-offset:3px;border-radius:6px}
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
+.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:var(--snow);border-bottom:1px solid var(--line-n)}
+.head .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--snow);direction:ltr;flex-shrink:0}
+.brand i{width:52px;aspect-ratio:300/216;background:url("../assets/nesta-mark.png") center/contain no-repeat;display:block}
+.brand b{font-family:"Readex Pro",sans-serif;font-weight:600;font-size:20px;line-height:1}
+.brand small{display:block;font-family:"Readex Pro",sans-serif;font-size:9px;letter-spacing:.24em;color:var(--snow-mut);margin-top:4px}
+.links{display:flex;gap:4px;margin-inline-start:auto}
+.links a{color:var(--snow-mut);text-decoration:none;font-size:14.5px;padding:7px 12px;border-radius:8px}
+.links a:hover{color:var(--snow);background:var(--navy-2)}
+.links a[aria-current="page"]{color:var(--snow);background:var(--navy-2)}
+.lang{display:flex;background:var(--navy-2);border:1px solid var(--line-n);border-radius:999px;padding:3px;direction:ltr}
+.lang button{font:500 13px/1 "Readex Pro",sans-serif;border:0;background:none;color:var(--snow-mut);padding:7px 12px;border-radius:999px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--snow);color:var(--navy)}
+.progress{position:absolute;inset-inline-start:0;bottom:-1px;height:2px;width:0;background:var(--mint)}
+@media (max-width:760px){.links{display:none}.lang{margin-inline-start:auto}.brand small{display:none}}
+
+main{padding-block:40px 72px}
+.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
+.toc{position:sticky;top:96px;font-size:14.5px;display:grid;gap:2px;max-height:calc(100vh - 120px);overflow:auto;padding-inline-end:4px}
+.toc p{margin:0 0 8px;font-family:var(--f-display);font-weight:600;font-size:13px;color:var(--muted)}
+.toc a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px;line-height:1.5;border-inline-start:2px solid transparent}
+.toc a:hover{color:var(--ink);background:#DDE4EB}
+.toc a.on{color:var(--mint-deep);background:var(--mint-soft);border-inline-start-color:var(--mint-deep);font-weight:600}
+.paper{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,52px) clamp(20px,4.5vw,60px);min-width:0}
+.crumb{font-size:13.5px;color:var(--muted);margin-bottom:6px}
+.crumb a{color:var(--muted)}
+.paper h1{font-family:var(--f-display);font-size:clamp(28px,3.4vw,36px);font-weight:600;margin:0;line-height:1.3;text-wrap:balance}
+.paper .muted{color:var(--muted);font-size:14px;margin:6px 0 0}
+.paper h1 + p.muted{padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.paper h2{font-family:var(--f-display);font-size:19px;font-weight:600;color:var(--navy);margin:34px 0 8px;scroll-margin-top:96px;line-height:1.5}
+.paper p{margin:8px 0;max-width:72ch}
+.paper ul{padding-inline-start:22px;margin:8px 0;max-width:72ch}
+.paper li{margin:6px 0}
+.paper li::marker{color:var(--mint-deep)}
+.paper b,.paper strong{color:var(--navy);font-weight:600}
+.paper a{color:var(--mint-deep);text-underline-offset:3px}
+.paper em{color:var(--muted)}
+.paper .note{background:var(--mint-soft);border-inline-start:3px solid var(--mint-deep);border-radius:8px;padding:12px 16px;margin-top:22px;font-size:15.5px}
+section.lang-block[hidden]{display:none}
+@media (max-width:900px){.layout{grid-template-columns:1fr}.toc{display:none}}
+
+.foot{background:var(--navy-3);color:var(--snow-mut);font-size:14px}
+.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:24px}
+.foot a{color:var(--snow-mut);text-decoration:none}
+.foot a:hover{color:var(--mint)}
+.foot nav{display:flex;gap:18px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header class="head">
+  <div class="wrap">
+    <a class="brand" href="https://shekonesta94.github.io/" aria-label="Nesta Automation"><i></i><span><b>Nesta</b><small>AUTOMATION SERVICES</small></span></a>
+    <nav class="links">
+      <a href="https://shekonesta94.github.io/" data-t="home">الرئيسية</a>
+      <a href="https://shekonesta94.github.io/terms/" data-t="terms">الشروط والأحكام</a>
+      <a href="https://shekonesta94.github.io/privacy.html" data-t="privacy">سياسة الخصوصية</a>
+      <a href="https://shekonesta94.github.io/data-deletion/" data-t="del" aria-current="page">حذف البيانات</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Language"><button type="button" id="l-ar" data-l="ar" aria-pressed="true">ع</button><button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button></div>
+  </div>
+  <div class="progress" id="progress"></div>
+</header>
+
+<main>
+  <div class="wrap layout">
+    <aside class="toc" id="toc" aria-label="Contents"></aside>
+    <article class="paper">
+      <div class="crumb"><a href="https://shekonesta94.github.io/">Nesta Automation</a> ‹ <span id="crumb">حذف البيانات</span></div>
+<section class="lang-block" id="ar" lang="ar" dir="rtl">
+  <h1>حذف البيانات</h1>
+  <p class="muted">Nesta Automation — آخر تحديث: 19 نوفمبر 2026</p>
+
+  <p>يحق لك أن تطلب منّا حذف أي بيانات لدينا عنك، في أي وقت ودون ذكر سبب. وتوضّح هذه الصفحة طريقة ذلك.</p>
+
+  <h2>1. البيانات التي قد تكون لدينا</h2>
+  <ul>
+    <li>رقم هاتفك واسمك الظاهر على واتساب.</li>
+    <li>رسائلك مع مساعد المبيعات الخاص بنا على واتساب.</li>
+    <li>البيانات التي شاركتها معنا، مثل اسمك واسم نشاطك وبريدك الإلكتروني والباقة التي اخترتها.</li>
+    <li>سجل طلبك ورسائل التأكيد التي أُرسلت إليك.</li>
+  </ul>
+
+  <h2>2. كيف تطلب الحذف</h2>
+  <p>أرسل بريدًا إلكترونيًا إلى <a href="mailto:hishamfthi.business@gmail.com">hishamfthi.business@gmail.com</a> يتضمن:</p>
+  <ul>
+    <li>عنوان الرسالة: <b>طلب حذف بيانات</b></li>
+    <li>رقم الواتساب الذي تواصلت معنا منه، وبريدك الإلكتروني إن كنت قد شاركته معنا.</li>
+  </ul>
+  <p>وإذا كنت تستخدم الخدمة عن طريق تسجيل الدخول بحساب فيسبوك أو Google، فاذكر ذلك في رسالتك.</p>
+
+  <h2>3. ماذا يحدث بعد طلبك</h2>
+  <ul>
+    <li>نرد عليك لتأكيد استلام الطلب خلال 7 أيام.</li>
+    <li>قد نطلب منك تأكيدًا بسيطًا بأن الرقم أو البريد يخصّك، حتى لا يتمكن أحد من حذف بيانات شخص آخر.</li>
+    <li>نحذف بياناتك من جداولنا وسجلاتنا وأنظمة الأتمتة خلال 30 يومًا كحد أقصى، ونبلغك عند اكتمال الحذف.</li>
+  </ul>
+
+  <h2>4. ما يخرج عن نطاقنا</h2>
+  <ul>
+    <li><b>محادثة واتساب على هاتفك:</b> يمكنك حذفها بنفسك من التطبيق. أما نسخ الرسائل على أنظمة Meta فتخضع لسياسة Meta.</li>
+    <li><b>بيانات يلزمنا القانون بالاحتفاظ بها:</b> مثل سجلات الفواتير والمدفوعات للعملاء المشتركين، ونحتفظ بها فقط طوال المدة التي يتطلبها القانون.</li>
+    <li><b>عملاء الأنشطة التي نشغّل لها بوتات:</b> بياناتك ملك لذلك النشاط. يمكنك طلب الحذف منه مباشرة، أو منّا وننفّذه بالتنسيق معه.</li>
+  </ul>
+
+  <h2>5. إذا ربطت حساب Google</h2>
+  <p>يمكنك إلغاء وصول تطبيق Hisham Automation إلى حسابك في أي وقت من <a href="https://myaccount.google.com/permissions">صفحة أذونات حسابك على Google</a>، ثم مراسلتنا لحذف أي بيانات متعلقة به.</p>
+
+  <p class="note">لمعرفة المزيد عن البيانات التي نجمعها وكيف نستخدمها، اقرأ <a href="https://shekonesta94.github.io/privacy.html">سياسة الخصوصية</a>.</p>
+</section>
+
+<section class="lang-block" id="en" lang="en" dir="ltr">
+  <h1>Data Deletion</h1>
+  <p class="muted">Nesta Automation — Last updated: 19 November 2026</p>
+
+  <p>You can ask us to delete any data we hold about you, at any time and without giving a reason. This page explains how.</p>
+
+  <h2>1. Data we may hold</h2>
+  <ul>
+    <li>Your phone number and WhatsApp profile name.</li>
+    <li>Your messages with our WhatsApp sales assistant.</li>
+    <li>Details you shared with us, such as your name, business name, email address and chosen package.</li>
+    <li>Your request record and any confirmation emails sent to you.</li>
+  </ul>
+
+  <h2>2. How to request deletion</h2>
+  <p>Send an email to <a href="mailto:hishamfthi.business@gmail.com">hishamfthi.business@gmail.com</a> with:</p>
+  <ul>
+    <li>Subject: <b>Data Deletion Request</b></li>
+    <li>The WhatsApp number you contacted us from, and your email address if you shared it with us.</li>
+  </ul>
+  <p>If you use the service by signing in with a Facebook or Google account, mention that in your email.</p>
+
+  <h2>3. What happens next</h2>
+  <ul>
+    <li>We reply to confirm we received your request within 7 days.</li>
+    <li>We may ask for a simple confirmation that the number or email is yours, so no one can delete someone else's data.</li>
+    <li>We delete your data from our sheets, records and automation systems within 30 days at most, and let you know when it is done.</li>
+  </ul>
+
+  <h2>4. What is outside our control</h2>
+  <ul>
+    <li><b>The WhatsApp chat on your phone:</b> you can delete it yourself in the app. Copies of messages on Meta's systems are governed by Meta's policy.</li>
+    <li><b>Data we must keep by law:</b> such as invoice and payment records for subscribed clients, kept only for as long as the law requires.</li>
+    <li><b>Customers of businesses we run bots for:</b> your data belongs to that business. You can ask the business to delete it, or ask us and we will do it in coordination with them.</li>
+  </ul>
+
+  <h2>5. If you connected a Google account</h2>
+  <p>You can remove the Hisham Automation app's access at any time from <a href="https://myaccount.google.com/permissions">your Google Account permissions page</a>, and email us so we delete any related data.</p>
+
+  <p class="note">For more on what data we collect and how we use it, read our <a href="https://shekonesta94.github.io/privacy.html">Privacy Policy</a>.</p>
+</section>
+    </article>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>© 2026 Nesta Automation</span>
+    <nav>
+      <a href="https://shekonesta94.github.io/" data-t="home">الرئيسية</a>
+      <a href="https://shekonesta94.github.io/terms/" data-t="terms">الشروط والأحكام</a>
+      <a href="https://shekonesta94.github.io/privacy.html" data-t="privacy">سياسة الخصوصية</a>
+      <a href="https://shekonesta94.github.io/data-deletion/" data-t="del">حذف البيانات</a>
+      <a href="https://wa.me/201093114446" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.facebook.com/nestaautomation" target="_blank" rel="noopener">Facebook</a>
+      <a href="https://www.instagram.com/nestaautomation/" target="_blank" rel="noopener">Instagram</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var NAV = {ar:{home:'الرئيسية',terms:'الشروط والأحكام',privacy:'سياسة الخصوصية',del:'حذف البيانات',toc:'المحتويات'}, en:{home:'Home',terms:'Terms & Conditions',privacy:'Privacy Policy',del:'Data Deletion',toc:'Contents'}};
+  var blocks = document.querySelectorAll('section.lang-block');
+  var toc = document.getElementById('toc');
+  var tocLinks = [], heads = [];
+  function buildToc(sec, l){
+    toc.innerHTML = '';
+    var p = document.createElement('p'); p.textContent = NAV[l].toc; toc.appendChild(p);
+    heads = Array.prototype.slice.call(sec.querySelectorAll('h2'));
+    tocLinks = heads.map(function(h, i){
+      if(!h.id) h.id = (sec.id || 's') + '-' + (i+1);
+      var a = document.createElement('a'); a.href = '#' + h.id; a.textContent = h.textContent; toc.appendChild(a); return a;
+    });
+    spy();
+  }
+  function setLang(l){
+    var target = null;
+    blocks.forEach(function(b){ var on = b.getAttribute('lang') === l; b.hidden = !on; if(on) target = b; });
+    if(!target){ target = blocks[0]; l = target.getAttribute('lang'); target.hidden = false; }
+    document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-t]').forEach(function(a){ a.textContent = NAV[l][a.dataset.t]; });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.l === l ? 'true' : 'false'); });
+    var h1 = target.querySelector('h1'); if(h1) document.getElementById('crumb').textContent = h1.textContent;
+    try{ localStorage.setItem('nesta-lang', l); }catch(e){}
+    buildToc(target, l);
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.l); window.scrollTo(0,0); }); });
+
+  var bar = document.getElementById('progress');
+  function spy(){
+    var h = document.documentElement; bar.style.width = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100).toFixed(1) + '%';
+    var cur = 0; heads.forEach(function(x, i){ if(x.getBoundingClientRect().top < 140) cur = i; });
+    tocLinks.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  }
+  addEventListener('scroll', spy, {passive:true});
+
+  var start = 'ar';
+  try{ start = localStorage.getItem('nesta-lang') || start; }catch(e){}
+  if(location.hash === '#en' || location.hash === '#ar') start = location.hash.slice(1);
+  setLang(start);
+})();
+</script>
+</body>
+</html>
