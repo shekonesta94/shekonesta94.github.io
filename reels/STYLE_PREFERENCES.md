@@ -34,3 +34,6 @@ Read this before writing any script or any frame. Every point here came from a r
 - Show the full plan (look, shot table on the VO timing) and get approval before building.
 - Before sending: render the full film, **count frames**, pull frames from the encoded file.
 - Durable deliverables: 9:16, 1080×1920, 60 fps, -14 LUFS.
+- Every element must sit on its surface at the moment it appears (e.g. paper slips land ON the receipt, never on
+  the bare counter because the paper hasn't reached there yet). Check the frames right before each new line.
+- Icons must read instantly: a moon is a filled crescent with stars, a clock has hour marks. No ambiguous outlines.

@@ -45,13 +45,20 @@ const STROKES = [
   { pts: arcPts(-240, 850, 60, -Math.PI / 2, Math.PI * 1.5), t0: V.s247 + 0.5, t1: V.s247 + 1.0 },
   { pts: linePts([-240, 850], [-240, 806]), t0: V.s247 + 1.0, t1: V.s247 + 1.1 },
   { pts: linePts([-240, 850], [-204, 850]), t0: V.s247 + 1.1, t1: V.s247 + 1.2 },
-  { pts: [...arcPts(-90, 850, 52, -2.3, 2.3, 30), ...arcPts(-66, 850, 42, 2.0, -2.0, 30)], t0: V.s247 + 1.25, t1: V.s247 + 1.75 },
   { pts: tick(-330, Y.item3 - 12), t0: V.book + 0.25, t1: V.book + 0.45 },
   // the paper gets ruled into a sheet
   ...[0, 1, 2, 3, 4].map((i) => ({ pts: linePts([350, Y.grid0 + i * 60], [-350, Y.grid0 + i * 60], 12), t0: V.sheet - 0.15 + i * 0.07, t1: V.sheet + 0.1 + i * 0.07 })),
   ...[110, -130].map((x, i) => ({ pts: linePts([x, Y.grid0], [x, Y.grid0 + 240], 8), t0: V.sheet + 0.25 + i * 0.08, t1: V.sheet + 0.45 + i * 0.08 })),
 ];
 for (const s of STROKES) { s.len = [0]; for (let k = 1; k < s.pts.length; k++) s.len.push(s.len[k - 1] + Math.hypot(s.pts[k][0] - s.pts[k - 1][0], s.pts[k][1] - s.pts[k - 1][1])); s.total = s.len[s.len.length - 1]; }
+function nightIcons(ctx, t) {
+  const ck = clamp((t - (V.s247 + 1.0)) / 0.2);
+  if (ck > 0) { ctx.save(); ctx.globalAlpha = ck; ctx.fillStyle = C.pen; for (let i = 0; i < 12; i++) { const a = (i / 12) * TAU; ctx.beginPath(); ctx.arc(-240 + Math.cos(a) * 48, 850 + Math.sin(a) * 48, i % 3 ? 3 : 5, 0, TAU); ctx.fill(); } ctx.beginPath(); ctx.arc(-240, 850, 6, 0, TAU); ctx.fill(); ctx.restore(); }
+  const mk = clamp((t - (V.s247 + 1.25)) / 0.3);
+  if (mk > 0) { ctx.save(); ctx.globalAlpha = mk; ctx.fillStyle = C.pen; ctx.beginPath(); ctx.arc(-90, 850, 52, 0, TAU); ctx.fill(); ctx.fillStyle = C.paper; ctx.beginPath(); ctx.arc(-62, 834, 46, 0, TAU); ctx.fill(); ctx.fillStyle = C.pen;
+    for (const [sx, sy, r] of [[-20, 800, 10], [10, 860, 7], [-150, 790, 8]]) { ctx.beginPath(); for (let k = 0; k < 10; k++) { const a = -Math.PI / 2 + k * Math.PI / 5, rr = k % 2 ? r * 0.45 : r; k ? ctx.lineTo(sx + Math.cos(a) * rr, sy + Math.sin(a) * rr) : ctx.moveTo(sx + Math.cos(a) * rr, sy + Math.sin(a) * rr); } ctx.closePath(); ctx.fill(); }
+    ctx.restore(); }
+}
 function drawStrokes(ctx, t) {
   let tip = null;
   ctx.save(); ctx.strokeStyle = C.pen; ctx.lineWidth = 5; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
@@ -75,7 +82,7 @@ function pen(ctx, tip) {
 }
 
 // ---------------------------------------------------------------- paper unrolling
-const ROLLK = [[-0.4, 60], [0.05, 260], [V.hookA, 280], [V.hookA + 0.35, 450], [V.demoA, 450], [V.demoA + 0.35, 640], [V.s247, 640], [V.s247 + 0.35, 900], [V.book, 900], [V.book + 0.35, 1380], [V.offer - 0.3, 1380], [V.offer + 0.5, Y.card1 + 60]];
+const ROLLK = [[-0.4, 60], [0.05, 260], [V.hookA, 280], [V.hookA + 0.35, 450], [V.demoA, 450], [V.demoA + 0.35, 640], [V.s247, 640], [V.s247 + 0.35, 1010], [V.book, 1010], [V.book + 0.35, 1380], [V.offer - 0.3, 1380], [V.offer + 0.5, Y.card1 + 60]];
 function paperLen(t) { let i = 0; while (i < ROLLK.length - 2 && t >= ROLLK[i + 1][0]) i++; const [t0, a] = ROLLK[i], [t1, b] = ROLLK[i + 1]; return lerp(a, b, E.inOutCubic(clamp((t - t0) / (t1 - t0)))); }
 const shown = (t, y) => clamp((paperLen(t) - y - 10) / 40);
 let PAPERTEX = null, WOOD = null, LOGO = null;
@@ -221,7 +228,8 @@ const CAMK = [
   [V.s247 + 0.5, 0, 800, 1.3], [V.book - 0.2, 0, 850, 1.3], [V.book + 0.5, 0, 1120, 1.27], [V.lau - 0.1, 0, 1200, 1.27], [V.offer + 0.6, 0, 1720, 1.18],
   [T_CUT1, 0, 1780, 1.16], [T_LIFT1 + 0.2, DEST.x, DEST.y, 1.34], [30, DEST.x + 10, DEST.y + 10, 1.37],
 ];
-function cam(t) { let i = 0; while (i < CAMK.length - 2 && t >= CAMK[i + 1][0]) i++; const [t0, x0, y0, z0] = CAMK[i], [t1, x1, y1, z1] = CAMK[i + 1]; const e = E.inOutCubic(clamp((t - t0) / (t1 - t0))); return { x: lerp(x0, x1, e), y: lerp(y0, y1, e), z: lerp(z0, z1, e), rot: -0.035 + 0.012 * Math.sin(t * 0.55) }; }
+function cam(t) { let i = 0; while (i < CAMK.length - 2 && t >= CAMK[i + 1][0]) i++; const [t0, x0, y0, z0] = CAMK[i], [t1, x1, y1, z1] = CAMK[i + 1]; const e = E.inOutCubic(clamp((t - t0) / (t1 - t0))); let z = lerp(z0, z1, e); for (const k of [V.hookA + 0.35, V.demoA + 0.6, V.data + 0.5, V.sheet + 0.85, T_CUT1, T_LIFT1, V.need + 0.45, V.cta + 0.8]) if (t > k && t < k + 0.6) z += 0.05 * Math.exp(-(t - k) * 7) * Math.cos((t - k) * 22);
+  return { x: lerp(x0, x1, e) + 9 * noise1(t * 0.9, 4), y: lerp(y0, y1, e) + 9 * noise1(t * 0.8, 9), z, rot: -0.035 + 0.016 * Math.sin(t * 0.55) + 0.006 * noise1(t * 1.3, 2) }; }
 
 // ---------------------------------------------------------------- hits
 const HITS = [
@@ -244,6 +252,7 @@ function draw(ctx, t) {
   const tipA = strip(ctx, t);
   register(ctx, t);
   const tipB = drawStrokes(ctx, t);
+  nightIcons(ctx, t);
   // the cut-out card: scissors cut it, it lifts, glides to the clean counter, lands
   let tipC = null;
   if (t > T_CUT0 && t < T_CUT1) { const f = clamp((t - T_CUT0) / (T_CUT1 - T_CUT0)); const [x, y, a] = cutAt(f); scissors(ctx, x, y, a, t); }
