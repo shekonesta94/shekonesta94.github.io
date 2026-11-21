@@ -1,103 +1,194 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>سياسة الخصوصية | Privacy Policy — Nesta Automation</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<title>سياسة الخصوصية | Nesta Automation</title>
 <meta name="description" content="سياسة الخصوصية لخدمات Nesta Automation وتطبيق Hisham Automation - Privacy Policy for Nesta Automation and the Hisham Automation app">
-<link rel="icon" type="image/png" href="assets/nesta-mark.png">
+<link rel="canonical" href="https://shekonesta94.github.io/privacy.html">
+<meta name="theme-color" content="#F3F1EE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#111215" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:title" content="سياسة الخصوصية | Nesta Automation">
+<meta property="og:description" content="سياسة الخصوصية لخدمات Nesta Automation وتطبيق Hisham Automation - Privacy Policy for Nesta Automation and the Hisham Automation app">
+<meta property="og:url" content="https://shekonesta94.github.io/privacy.html">
+<meta property="og:image" content="https://shekonesta94.github.io/assets/nesta-logo.png">
+<link rel="icon" href="assets/favicon.png" type="image/png">
+<script>try{var t=localStorage.getItem('nesta-theme');if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alexandria:wght@400;500;600;700&family=Handjet:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: calm reading page — brand header, sticky contents list beside one paper column. No motion beyond a thin reading-progress line. */
 :root{
-  --navy:#101C2E; --navy-2:#16253B; --navy-3:#0B1626; --line-n:#24364F;
-  --paper:#F7F9FB; --ground:#E9EEF2; --line:#D8E0E8;
-  --ink:#16233A; --muted:#5A667B; --snow:#EAF0F5; --snow-mut:#A3B1C2;
-  --mint:#4BE3A8; --mint-deep:#0C7A55; --mint-soft:#E2F6EE;
-  --f-display:"Readex Pro","IBM Plex Sans Arabic","Segoe UI",Tahoma,sans-serif;
-  --f-body:"IBM Plex Sans Arabic","Readex Pro","Segoe UI",Tahoma,sans-serif;
-  --gut-l:max(16px,env(safe-area-inset-left,0px)); --gut-r:max(16px,env(safe-area-inset-right,0px));
-  color-scheme:light;
+  --paper:#F3F1EE; --paper-2:#E9E4DF; --card:#FFFFFF; --line:#DDD5CE;
+  --ink:#221C1F; --ink-2:#675C60;
+  --board:#231D22; --board-2:#2F282E; --board-3:#3C343B; --board-line:#463D44; --board-ink:#F6F1EE; --board-mut:#BBAFB4;
+  --amber:#EC7A4E; --amber-deep:#A8431C; --amber-soft:color-mix(in srgb,var(--amber) 16%,transparent);
+  --clay:#E9B9A6; --on-accent:#2A1208; --shadow:#2A1410; --wire:#5E5258; --busy:#54484F;
+  --f-text:"Alexandria","Segoe UI",Tahoma,sans-serif;
+  --f-num:"Handjet","Alexandria",ui-monospace,monospace;
+  --gl:max(16px,env(safe-area-inset-left,0px)); --gr:max(16px,env(safe-area-inset-right,0px));
+  --side:max(16px,calc((100vw - 1168px) / 2));
+  --ease:cubic-bezier(.16,1,.3,1);
+  --r:24px;
 }
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#111215; --paper-2:#191B1F; --card:#1F2126; --line:#2E3138; --ink:#EEF0F3; --ink-2:#A4A9B3;
+  --board:#08090B; --board-2:#16181C; --board-3:#21242A; --board-line:#30343C; --board-ink:#EEF0F3; --board-mut:#A4A9B3;
+  --amber:#FF7A66; --amber-deep:#FF8A78; --clay:#5C2E2A; --on-accent:#2A0F0B; --shadow:#000000; --wire:#4C515B; --busy:#3B3F47; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#111215; --paper-2:#191B1F; --card:#1F2126; --line:#2E3138; --ink:#EEF0F3; --ink-2:#A4A9B3;
+  --board:#08090B; --board-2:#16181C; --board-3:#21242A; --board-line:#30343C; --board-ink:#EEF0F3; --board-mut:#A4A9B3;
+  --amber:#FF7A66; --amber-deep:#FF8A78; --clay:#5C2E2A; --on-accent:#2A0F0B; --shadow:#000000; --wire:#4C515B; --busy:#3B3F47; color-scheme:dark}
+.mode{display:grid;place-items:center;width:42px;height:40px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--ink);cursor:pointer;transition:border-color .2s,background .2s}
+.mode:hover{border-color:var(--ink-2);background:var(--paper-2)}
+.mode .ico{width:19px;height:19px}
+.mode .i-sun{display:none}
+:root[data-theme="dark"] .mode .i-sun{display:block}:root[data-theme="dark"] .mode .i-moon{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .mode .i-sun{display:block}:root:not([data-theme="light"]) .mode .i-moon{display:none}}
+
+html.skinning *,html.skinning *::before,html.skinning *::after{transition:background-color .5s ease,color .5s ease,border-color .5s ease!important}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.9;-webkit-font-smoothing:antialiased}
-html[lang="en"] body{font-size:16.5px;line-height:1.8}
-.wrap{max-width:1120px;margin:0 auto;padding-left:var(--gut-l);padding-right:var(--gut-r)}
-:focus-visible{outline:2px solid var(--mint-deep);outline-offset:3px;border-radius:6px}
-
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--navy)}
-.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--navy);color:var(--snow);border-bottom:1px solid var(--line-n)}
-.head .wrap{display:flex;align-items:center;gap:18px;min-height:64px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--snow);direction:ltr;flex-shrink:0}
-.brand i{width:52px;aspect-ratio:300/216;background:url("assets/nesta-mark.png") center/contain no-repeat;display:block}
-.brand b{font-family:"Readex Pro",sans-serif;font-weight:600;font-size:20px;line-height:1}
-.brand small{display:block;font-family:"Readex Pro",sans-serif;font-size:9px;letter-spacing:.24em;color:var(--snow-mut);margin-top:4px}
-.links{display:flex;gap:4px;margin-inline-start:auto}
-.links a{color:var(--snow-mut);text-decoration:none;font-size:14.5px;padding:7px 12px;border-radius:8px}
-.links a:hover{color:var(--snow);background:var(--navy-2)}
-.links a[aria-current="page"]{color:var(--snow);background:var(--navy-2)}
-.lang{display:flex;background:var(--navy-2);border:1px solid var(--line-n);border-radius:999px;padding:3px;direction:ltr}
-.lang button{font:500 13px/1 "Readex Pro",sans-serif;border:0;background:none;color:var(--snow-mut);padding:7px 12px;border-radius:999px;cursor:pointer}
-.lang button[aria-pressed="true"]{background:var(--snow);color:var(--navy)}
-.progress{position:absolute;inset-inline-start:0;bottom:-1px;height:2px;width:0;background:var(--mint)}
-@media (max-width:760px){.links{display:none}.lang{margin-inline-start:auto}.brand small{display:none}}
-
-main{padding-block:40px 72px}
-.layout{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
-.toc{position:sticky;top:96px;font-size:14.5px;display:grid;gap:2px;max-height:calc(100vh - 120px);overflow:auto;padding-inline-end:4px}
-.toc p{margin:0 0 8px;font-family:var(--f-display);font-weight:600;font-size:13px;color:var(--muted)}
-.toc a{color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:8px;line-height:1.5;border-inline-start:2px solid transparent}
-.toc a:hover{color:var(--ink);background:#DDE4EB}
-.toc a.on{color:var(--mint-deep);background:var(--mint-soft);border-inline-start-color:var(--mint-deep);font-weight:600}
-.paper{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(24px,4vw,52px) clamp(20px,4.5vw,60px);min-width:0}
-.crumb{font-size:13.5px;color:var(--muted);margin-bottom:6px}
-.crumb a{color:var(--muted)}
-.paper h1{font-family:var(--f-display);font-size:clamp(28px,3.4vw,36px);font-weight:600;margin:0;line-height:1.3;text-wrap:balance}
-.paper .muted{color:var(--muted);font-size:14px;margin:6px 0 0}
-.paper h1 + p.muted{padding-bottom:22px;border-bottom:1px solid var(--line);margin-bottom:8px}
-.paper h2{font-family:var(--f-display);font-size:19px;font-weight:600;color:var(--navy);margin:34px 0 8px;scroll-margin-top:96px;line-height:1.5}
-.paper p{margin:8px 0;max-width:72ch}
-.paper ul{padding-inline-start:22px;margin:8px 0;max-width:72ch}
-.paper li{margin:6px 0}
-.paper li::marker{color:var(--mint-deep)}
-.paper b,.paper strong{color:var(--navy);font-weight:600}
-.paper a{color:var(--mint-deep);text-underline-offset:3px}
-.paper em{color:var(--muted)}
-.paper .note{background:var(--mint-soft);border-inline-start:3px solid var(--mint-deep);border-radius:8px;padding:12px 16px;margin-top:22px;font-size:15.5px}
-section.lang-block[hidden]{display:none}
-@media (max-width:900px){.layout{grid-template-columns:1fr}.toc{display:none}}
-
-.foot{background:var(--navy-3);color:var(--snow-mut);font-size:14px}
-.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:24px}
-.foot a{color:var(--snow-mut);text-decoration:none}
-.foot a:hover{color:var(--mint)}
-.foot nav{display:flex;gap:18px;flex-wrap:wrap}
-@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:96px}
+html.lenis,html.lenis body{height:auto}
+.lenis-smooth{scroll-behavior:auto!important}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-text);font-size:17px;line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:clip;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+.skip{position:fixed;inset-inline-start:12px;top:-80px;z-index:60;background:var(--amber);color:var(--on-accent);padding:10px 16px;border-radius:10px;font-weight:600;text-decoration:none;transition:top .2s}
+.skip:focus{top:calc(12px + env(safe-area-inset-top,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+::selection{background:var(--amber);color:var(--on-accent)}
+a{color:inherit;text-underline-offset:.3em}
+h1,h2,h3{margin:0;text-wrap:balance;letter-spacing:-.015em}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:8px}
+.wrap{max-width:1200px;margin:0 auto;padding-left:var(--gl);padding-right:var(--gr)}
+.ico{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ico.fill{fill:currentColor;stroke:none}
+.head{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--paper) 78%,transparent);backdrop-filter:saturate(1.3) blur(14px);-webkit-backdrop-filter:saturate(1.3) blur(14px);border-bottom:1px solid color-mix(in srgb,var(--line) 70%,transparent)}
+.head .wrap{display:flex;align-items:center;gap:24px;min-height:68px}
+.progress{position:absolute;inset-inline:0;bottom:-1px;height:2px;background:var(--amber);transform-origin:right;transform:scaleX(var(--sp,0));box-shadow:0 0 10px color-mix(in srgb,var(--amber) 70%,transparent)}
+html[dir="ltr"] .progress{transform-origin:left}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand img{width:40px;height:40px;border-radius:10px;box-shadow:0 2px 8px color-mix(in srgb,var(--shadow) 20%,transparent)}
+.brand b{display:block;font-size:1.25rem;font-weight:600;line-height:1;direction:ltr}
+.brand small{display:block;font-size:.58rem;letter-spacing:.2em;color:var(--ink-2);margin-top:4px;direction:ltr}
+.nav{display:flex;gap:4px;margin-inline-start:auto}
+.nav a{text-decoration:none;font-size:.92rem;color:var(--ink-2);padding:8px 12px;border-radius:10px;transition:color .2s,background .2s}
+.nav a:hover{color:var(--ink);background:var(--paper-2)}
+.nav a[aria-current="page"]{color:var(--ink);background:var(--paper-2)}
+.tools{display:flex;align-items:center;gap:10px}
+.lang{font:500 .85rem var(--f-text);background:none;border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:7px 12px;cursor:pointer;min-height:40px;min-width:44px;transition:border-color .2s}
+.lang:hover{border-color:var(--ink-2)}
+.btn{position:relative;overflow:hidden;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;font:600 .9rem var(--f-text);border-radius:11px;padding:9px 16px;min-height:40px;border:0;background:var(--amber);color:var(--on-accent);box-shadow:0 8px 22px -10px color-mix(in srgb,var(--amber-deep) 70%,transparent)}
+.btn::after{content:"";position:absolute;inset:-2px;z-index:-1;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);transform:translateX(-120%);animation:sheen 4.5s var(--ease) infinite}
+@keyframes sheen{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+/* title band (card -> full bleed) */
+.band{--p:0;padding-inline:calc(var(--side) * (1 - var(--p)));margin-top:28px}
+.board{background:var(--board);color:var(--board-ink);position:relative;overflow:hidden;isolation:isolate;border-radius:calc(var(--r) * (1 - var(--p)) + 0px)}
+.board::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(700px 300px at 50% 30%,color-mix(in srgb,var(--amber) 14%,transparent),transparent 70%)}
+.gridfx{position:absolute;inset:0;z-index:-1;pointer-events:none;width:100%;height:100%;-webkit-mask:radial-gradient(ellipse 80% 80% at 50% 40%,#000 25%,transparent 80%);mask:radial-gradient(ellipse 80% 80% at 50% 40%,#000 25%,transparent 80%)}
+.gridfx .gl{stroke:color-mix(in srgb,var(--board-ink) 7%,transparent);fill:none}
+.gridfx rect.sq{fill:var(--amber);opacity:0;animation:sq 4s ease-in-out infinite}
+@keyframes sq{0%,100%{opacity:0}50%{opacity:.22}}
+.title{padding-block:clamp(44px,6vw,80px)}
+.crumb{font-size:.82rem;color:var(--board-mut);display:flex;gap:8px;align-items:center}
+.crumb a{color:var(--board-mut);text-decoration:none}
+.crumb a:hover{color:var(--board-ink)}
+.title h1{font-size:clamp(2.2rem,5vw,4rem);line-height:1.15;font-weight:700;margin-top:12px}
+.title .date{margin-top:14px;display:inline-flex;align-items:center;gap:10px;font-size:.88rem;color:var(--board-mut);border:1px solid var(--board-line);border-radius:999px;padding:6px 14px}
+.title .date::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px color-mix(in srgb,var(--amber) 80%,transparent)}
+/* body */
+.doc{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;padding-block:44px 80px;align-items:start}
+.toc{position:sticky;top:96px;display:flex;flex-direction:column;gap:2px;max-height:calc(100vh - 120px);overflow:auto;scrollbar-width:thin;padding-inline-end:6px}
+.toc p{margin:0 0 10px;font-size:.78rem;font-weight:600;color:var(--ink-2);letter-spacing:.02em}
+.toc a{font-size:.86rem;line-height:1.5;color:var(--ink-2);text-decoration:none;padding:7px 12px;border-radius:10px;border-inline-start:2px solid transparent;transition:color .2s,background .2s,border-color .2s}
+.toc a:hover{color:var(--ink);background:var(--paper-2)}
+.toc a.on{color:var(--ink);background:var(--card);border-inline-start-color:var(--amber)}
+.paper{background:var(--card);border-radius:var(--r);padding:clamp(24px,4vw,52px);box-shadow:0 30px 60px -40px color-mix(in srgb,var(--shadow) 50%,transparent);min-width:0}
+.lang-block > h1,.lang-block > h1 + p{display:none}
+.lang-block h2{font-size:clamp(1.2rem,2vw,1.45rem);font-weight:600;margin:40px 0 12px;padding-top:28px;border-top:1px dashed var(--line);display:flex;align-items:center;gap:12px}
+.lang-block h2:first-of-type{margin-top:0;padding-top:0;border-top:0}
+.lang-block h2::before{content:"";width:10px;height:10px;border-radius:3px;background:var(--amber);flex:none;box-shadow:0 0 12px color-mix(in srgb,var(--amber) 60%,transparent)}
+.lang-block h3{font-size:1.05rem;margin:22px 0 8px}
+.lang-block p{margin:0 0 12px;color:var(--ink-2)}
+.lang-block ul,.lang-block ol{margin:0 0 14px;padding-inline-start:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.lang-block li{position:relative;padding-inline-start:22px;color:var(--ink-2)}
+.lang-block li::before{content:"";position:absolute;inset-inline-start:4px;top:.8em;width:6px;height:6px;border-radius:50%;background:var(--amber-deep)}
+.lang-block strong,.lang-block b{color:var(--ink);font-weight:600}
+.lang-block a{color:var(--amber-deep);font-weight:500;word-break:break-word}
+.lang-block table{width:100%;border-collapse:collapse;font-size:.92rem;margin:0 0 16px;display:block;overflow-x:auto}
+.lang-block th,.lang-block td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:start;vertical-align:top}
+.lang-block th{background:var(--paper-2);color:var(--ink);font-weight:600}
+.lang-block .muted{color:var(--ink-2)}
+[hidden]{display:none!important}
+/* footer */
+.foot{padding-block:48px 32px;font-size:.92rem;border-top:1px solid var(--line)}
+.foot-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) minmax(0,1fr);gap:40px}
+.foot h3{margin:0 0 14px;font-size:.88rem;font-weight:600}
+.foot ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.foot li a{display:inline-flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink-2);min-height:28px}
+.foot li a:hover{color:var(--ink);text-decoration:underline}
+.foot .about p{color:var(--ink-2);margin-top:14px;max-width:40ch}
+.mail{direction:ltr;unicode-bidi:isolate;word-break:break-all}
+.row2{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;margin-top:32px;padding-top:20px;border-top:1px solid var(--line);color:var(--ink-2);font-size:.8rem}
+@media (max-width:960px){.nav{display:none}.tools{margin-inline-start:auto}.doc{grid-template-columns:1fr}.toc{position:static;max-height:none;flex-direction:row;flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.toc p{display:none}.toc a{white-space:nowrap;border-inline-start:0;background:var(--paper-2)}.toc a.on{border-inline-start:0;background:var(--amber);color:var(--on-accent)}}
+@media (max-width:700px){body{font-size:16px}.head .wrap{gap:12px}.head .brand small{display:none}.head .btn{padding:8px 12px;font-size:.85rem}.foot-top{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.2 2.2 2.2 0 0 0 .1-1.3c0-.1-.2-.2-.5-.3Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.2 4.2L19 7"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-11.6 7.1L4 20l1-4A8 8 0 1 1 20 12Z"/></symbol>
+  <symbol id="i-sheet" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M4 9h16M4 15h16M10 3v18"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 1 1 12 0v5l2 2H4l2-2Z"/><path d="M10 21h4"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 5 6v6c0 4.4 3 7.6 7 9 4-1.4 7-4.6 7-9V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-box" viewBox="0 0 24 24"><path d="M4 8 12 4l8 4v8l-8 4-8-4V8Z"/><path d="m4 8 8 4 8-4M12 12v8"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m10 8.5 5 3.5-5 3.5v-7Z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+  <symbol id="i-bot" viewBox="0 0 24 24"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 14h.01M15 14h.01"/></symbol>
+  <symbol id="i-fb" viewBox="0 0 24 24"><path d="M14 8h3V4h-3a4 4 0 0 0-4 4v2H7v4h3v7h4v-7h3l1-4h-4V8Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5Z"/></symbol>
+</svg>
+<a class="skip" href="#content" data-t="skip">تخطّي للمحتوى</a>
 <header class="head">
   <div class="wrap">
-    <a class="brand" href="https://shekonesta94.github.io/" aria-label="Nesta Automation"><i></i><span><b>Nesta</b><small>AUTOMATION SERVICES</small></span></a>
-    <nav class="links">
+    <a class="brand" href="https://shekonesta94.github.io/" aria-label="Nesta Automation">
+      <img src="assets/nesta-mark.jpg" alt="" width="40" height="40">
+      <span><b translate="no">Nesta</b><small>AUTOMATION SERVICES</small></span>
+    </a>
+    <nav class="nav" aria-label="الصفحات" data-ta="navAria">
       <a href="https://shekonesta94.github.io/" data-t="home">الرئيسية</a>
       <a href="https://shekonesta94.github.io/terms/" data-t="terms">الشروط والأحكام</a>
       <a href="https://shekonesta94.github.io/privacy.html" data-t="privacy" aria-current="page">سياسة الخصوصية</a>
-      <a href="https://shekonesta94.github.io/data-deletion/" data-t="del">حذف البيانات</a>
     </nav>
-    <div class="lang" role="group" aria-label="Language"><button type="button" id="l-ar" data-l="ar" aria-pressed="true">ع</button><button type="button" id="l-en" data-l="en" aria-pressed="false">EN</button></div>
+    <div class="tools">
+      <button class="mode" id="mode" type="button" aria-label="الوضع الغامق"><svg aria-hidden="true" class="ico i-moon"><use href="#i-moon"/></svg><svg aria-hidden="true" class="ico i-sun"><use href="#i-sun"/></svg></button>
+      <button class="lang" id="lang" type="button" aria-label="Switch to English">EN</button>
+      <a class="btn" href="https://wa.me/201093114446?text=%D8%AF%D9%8A%D9%85%D9%88" target="_blank" rel="noopener" data-t="cta">جرّب الديمو</a>
+    </div>
   </div>
-  <div class="progress" id="progress"></div>
+  <span class="progress" id="progress" aria-hidden="true"></span>
 </header>
 
-<main>
-  <div class="wrap layout">
-    <aside class="toc" id="toc" aria-label="Contents"></aside>
+<main id="content">
+  <div class="band" data-band>
+    <div class="board fx">
+      <div class="wrap title">
+        <div class="crumb"><a href="https://shekonesta94.github.io/">Nesta Automation</a><span aria-hidden="true">/</span><span id="crumb"></span></div>
+        <h1 id="pageTitle"></h1>
+        <span class="date" id="pageDate"></span>
+      </div>
+    </div>
+  </div>
+  <div class="wrap doc">
+    <nav class="toc" id="toc" aria-label="المحتويات"></nav>
     <article class="paper">
-      <div class="crumb"><a href="https://shekonesta94.github.io/">Nesta Automation</a> ‹ <span id="crumb">سياسة الخصوصية</span></div>
 <section class="lang-block" id="ar" lang="ar" dir="rtl">
   <h1>سياسة الخصوصية</h1>
   <p class="muted">Nesta Automation — آخر تحديث: 19 نوفمبر 2026</p>
@@ -170,7 +261,6 @@ section.lang-block[hidden]{display:none}
   <p><a href="mailto:hishamfthi.business@gmail.com">hishamfthi.business@gmail.com</a></p>
   <p class="note">في حال وجود أي اختلاف بين النسخة العربية والنسخة الإنجليزية، يُعتمد النص العربي.</p>
 </section>
-
 <section class="lang-block" id="en" lang="en" dir="ltr">
   <h1>Privacy Policy</h1>
   <p class="muted">Nesta Automation — Last updated: 19 November 2026</p>
@@ -249,59 +339,111 @@ section.lang-block[hidden]{display:none}
 
 <footer class="foot">
   <div class="wrap">
-    <span>© 2026 Nesta Automation</span>
-    <nav>
-      <a href="https://shekonesta94.github.io/" data-t="home">الرئيسية</a>
-      <a href="https://shekonesta94.github.io/terms/" data-t="terms">الشروط والأحكام</a>
-      <a href="https://shekonesta94.github.io/privacy.html" data-t="privacy">سياسة الخصوصية</a>
-      <a href="https://shekonesta94.github.io/data-deletion/" data-t="del">حذف البيانات</a>
-      <a href="https://wa.me/201093114446" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="https://www.facebook.com/nestaautomation" target="_blank" rel="noopener">Facebook</a>
-      <a href="https://www.instagram.com/nestaautomation/" target="_blank" rel="noopener">Instagram</a>
-    </nav>
+    <div class="foot-top">
+      <div class="about">
+        <a class="brand" href="https://shekonesta94.github.io/" aria-label="Nesta Automation"><img src="assets/nesta-mark.jpg" alt="" width="40" height="40" loading="lazy"><span><b translate="no">Nesta</b><small>AUTOMATION SERVICES</small></span></a>
+        <p data-t="about">أتمتة الأعمال بالذكاء الاصطناعي للشركات الصغيرة والمتوسطة، في أي مكان.</p>
+      </div>
+      <div>
+        <h3 data-t="contact">تواصل معنا</h3>
+        <ul>
+          <li><a href="https://wa.me/201093114446" target="_blank" rel="noopener"><svg aria-hidden="true" class="ico fill"><use href="#i-wa"/></svg><span data-t="wa">واتساب</span></a></li>
+          <li><a href="https://www.facebook.com/nestaautomation" target="_blank" rel="noopener"><svg aria-hidden="true" class="ico"><use href="#i-fb"/></svg><span data-t="fb">فيسبوك</span></a></li>
+          <li><a href="mailto:hishamfthi.business@gmail.com"><svg aria-hidden="true" class="ico"><use href="#i-mail"/></svg><span class="mail">hishamfthi.business@gmail.com</span></a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 data-t="legal">قانوني</h3>
+        <ul>
+          <li><a href="https://shekonesta94.github.io/terms/" data-t="terms">الشروط والأحكام</a></li>
+          <li><a href="https://shekonesta94.github.io/privacy.html" data-t="privacy">سياسة الخصوصية</a></li>
+          <li><a href="https://shekonesta94.github.io/data-deletion/" data-t="deletion">حذف البيانات</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row2"><span>© 2026 Nesta Automation · Hisham Automation</span></div>
   </div>
 </footer>
 
+<script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
 <script>
 (function(){
-  var NAV = {ar:{home:'الرئيسية',terms:'الشروط والأحكام',privacy:'سياسة الخصوصية',del:'حذف البيانات',toc:'المحتويات'}, en:{home:'Home',terms:'Terms & Conditions',privacy:'Privacy Policy',del:'Data Deletion',toc:'Contents'}};
-  var blocks = document.querySelectorAll('section.lang-block');
-  var toc = document.getElementById('toc');
-  var tocLinks = [], heads = [];
-  function buildToc(sec, l){
-    toc.innerHTML = '';
-    var p = document.createElement('p'); p.textContent = NAV[l].toc; toc.appendChild(p);
-    heads = Array.prototype.slice.call(sec.querySelectorAll('h2'));
-    tocLinks = heads.map(function(h, i){
-      if(!h.id) h.id = (sec.id || 's') + '-' + (i+1);
-      var a = document.createElement('a'); a.href = '#' + h.id; a.textContent = h.textContent; toc.appendChild(a); return a;
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var root = document.documentElement, $ = function(id){ return document.getElementById(id); };
+  var T = {
+    ar:{skip:'تخطّي للمحتوى',home:'الرئيسية',terms:'الشروط والأحكام',privacy:'سياسة الخصوصية',deletion:'حذف البيانات',cta:'جرّب الديمو',toc:'المحتويات',about:'أتمتة الأعمال بالذكاء الاصطناعي للشركات الصغيرة والمتوسطة، في أي مكان.',contact:'تواصل معنا',legal:'قانوني',wa:'واتساب',fb:'فيسبوك',navAria:'الصفحات',dark:'الوضع الغامق',light:'الوضع الفاتح'},
+    en:{skip:'Skip to content',home:'Home',terms:'Terms & Conditions',privacy:'Privacy Policy',deletion:'Data deletion',cta:'Try the demo',toc:'Contents',about:'AI business automation for small and mid-sized businesses, anywhere.',contact:'Contact',legal:'Legal',wa:'WhatsApp',fb:'Facebook',navAria:'Pages',dark:'Switch to dark mode',light:'Switch to light mode'}
+  };
+  var blocks = [].slice.call(document.querySelectorAll('section.lang-block'));
+  var toc = $('toc'), links = [], heads = [], lang = 'ar';
+  function buildToc(sec){
+    toc.innerHTML = '<p>' + T[lang].toc + '</p>';
+    heads = [].slice.call(sec.querySelectorAll('h2'));
+    links = heads.map(function(h, i){
+      if (!h.id) h.id = sec.id + '-' + (i + 1);
+      var a = document.createElement('a'); a.href = '#' + h.id; a.textContent = h.textContent.trim(); toc.appendChild(a);
+      a.addEventListener('click', function(e){ e.preventDefault(); if (lenis) lenis.scrollTo(h, {offset:-90, duration:1.2}); else h.scrollIntoView({behavior: reduce ? 'auto' : 'smooth'}); history.replaceState(null, '', '#' + h.id); });
+      return a;
     });
-    spy();
   }
+  function isDark(){ var t = root.getAttribute('data-theme'); return t ? t === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches; }
+  function modeLabel(){ $('mode').setAttribute('aria-label', isDark() ? T[lang].light : T[lang].dark); }
   function setLang(l){
-    var target = null;
-    blocks.forEach(function(b){ var on = b.getAttribute('lang') === l; b.hidden = !on; if(on) target = b; });
-    if(!target){ target = blocks[0]; l = target.getAttribute('lang'); target.hidden = false; }
-    document.documentElement.lang = l; document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
-    document.querySelectorAll('[data-t]').forEach(function(a){ a.textContent = NAV[l][a.dataset.t]; });
-    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', b.dataset.l === l ? 'true' : 'false'); });
-    var h1 = target.querySelector('h1'); if(h1) document.getElementById('crumb').textContent = h1.textContent;
-    try{ localStorage.setItem('nesta-lang', l); }catch(e){}
-    buildToc(target, l);
+    var target = blocks.filter(function(b){ return b.getAttribute('lang') === l; })[0] || blocks[0];
+    lang = target.getAttribute('lang');
+    blocks.forEach(function(b){ b.hidden = b !== target; });
+    root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('[data-t]').forEach(function(el){ el.textContent = T[lang][el.getAttribute('data-t')]; });
+    document.querySelectorAll('[data-ta]').forEach(function(el){ el.setAttribute('aria-label', T[lang][el.getAttribute('data-ta')]); });
+    toc.setAttribute('aria-label', T[lang].toc);
+    var h1 = target.querySelector('h1'), dp = h1 && h1.nextElementSibling;
+    $('pageTitle').textContent = h1 ? h1.textContent : '';
+    $('crumb').textContent = h1 ? h1.textContent : '';
+    $('pageDate').textContent = dp ? dp.textContent : '';
+    document.title = (h1 ? h1.textContent + ' | ' : '') + 'Nesta Automation';
+    $('lang').textContent = lang === 'en' ? 'ع' : 'EN';
+    $('lang').setAttribute('aria-label', lang === 'en' ? 'التحويل للعربي' : 'Switch to English');
+    modeLabel(); buildToc(target); onScroll();
+    try { localStorage.setItem('nesta-lang', lang); } catch(e){}
   }
-  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.l); window.scrollTo(0,0); }); });
+  $('lang').addEventListener('click', function(){ setLang(lang === 'ar' ? 'en' : 'ar'); scrollTo(0, 0); });
+  $('mode').addEventListener('click', function(){
+    var next = isDark() ? 'light' : 'dark';
+    root.classList.add('skinning'); setTimeout(function(){ root.classList.remove('skinning'); }, 650);
+    root.setAttribute('data-theme', next); modeLabel();
+    try { localStorage.setItem('nesta-theme', next); } catch(e){}
+  });
 
-  var bar = document.getElementById('progress');
-  function spy(){
-    var h = document.documentElement; bar.style.width = (h.scrollTop / Math.max(1, h.scrollHeight - h.clientHeight) * 100).toFixed(1) + '%';
-    var cur = 0; heads.forEach(function(x, i){ if(x.getBoundingClientRect().top < 140) cur = i; });
-    tocLinks.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
+  /* live grid on the title board */
+  var NS = 'http://www.w3.org/2000/svg';
+  document.querySelectorAll('.board.fx').forEach(function(board){
+    var svg = document.createElementNS(NS, 'svg'), S = 44, id = 'g' + Math.random().toString(36).slice(2, 7);
+    svg.setAttribute('class', 'gridfx'); svg.setAttribute('aria-hidden', 'true');
+    svg.innerHTML = '<defs><pattern id="' + id + '" width="' + S + '" height="' + S + '" patternUnits="userSpaceOnUse"><path class="gl" d="M' + S + ' 0H0V' + S + '"/></pattern></defs><rect width="100%" height="100%" fill="url(#' + id + ')"/>';
+    board.insertBefore(svg, board.firstChild);
+    function place(r){ r.setAttribute('x', Math.floor(Math.random() * board.clientWidth / S) * S + 1); r.setAttribute('y', Math.floor(Math.random() * board.clientHeight / S) * S + 1); }
+    for (var k = 0; k < 12; k++){
+      var r = document.createElementNS(NS, 'rect'); r.setAttribute('class', 'sq'); r.setAttribute('width', S - 1); r.setAttribute('height', S - 1);
+      r.style.animationDelay = (Math.random() * 4).toFixed(2) + 's'; r.style.animationDuration = (3 + Math.random() * 3).toFixed(2) + 's';
+      place(r); r.addEventListener('animationiteration', function(e){ place(e.target); }); svg.appendChild(r);
+    }
+  });
+
+  var band = document.querySelector('[data-band]');
+  function onScroll(){
+    var vh = innerHeight, y = scrollY, max = document.documentElement.scrollHeight - vh;
+    $('progress').style.setProperty('--sp', max > 0 ? Math.min(1, y / max) : 0);
+    if (!reduce){ var p = Math.max(0, Math.min(1, y / 220)); p = p * p * (3 - 2 * p); band.style.setProperty('--p', p.toFixed(3)); }
+    var cur = 0; heads.forEach(function(h, i){ if (h.getBoundingClientRect().top < 160) cur = i; });
+    links.forEach(function(a, i){ a.classList.toggle('on', i === cur); });
   }
-  addEventListener('scroll', spy, {passive:true});
+  var lenis = null;
+  if (window.Lenis && !reduce){ lenis = new Lenis({lerp:.1}); lenis.on('scroll', onScroll); (function raf(t){ lenis.raf(t); requestAnimationFrame(raf); })(performance.now()); }
+  else addEventListener('scroll', onScroll, {passive:true});
 
   var start = 'ar';
-  try{ start = localStorage.getItem('nesta-lang') || start; }catch(e){}
-  if(location.hash === '#en' || location.hash === '#ar') start = location.hash.slice(1);
+  try { start = localStorage.getItem('nesta-lang') || start; } catch(e){}
+  if (location.hash === '#en' || location.hash === '#ar') start = location.hash.slice(1);
   setLang(start);
 })();
 </script>
