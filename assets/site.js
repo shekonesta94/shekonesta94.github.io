@@ -33,7 +33,7 @@
     ph:'Nesta · Customer service', phs:'Online now',
     d1:'demo', d2:'Welcome to Nesta! What’s your business? Restaurant, clinic, gym, real estate, or something else?', d3:'Dental clinic',
     d4:'Got it. Should the bot only answer questions, or also book appointments and send reminders?', d5:'Book and remind too',
-    d6:'Then the clinic bot fits you best: it books appointments and sends a reminder before each one. Setup from 4,000 EGP, then a monthly subscription. Want an engineer to call you?',
+    d6:'Then the clinic bot fits you best: it books appointments and sends a reminder before each one. Setup starts from 4,000 EGP, then a monthly subscription. Want an engineer to call you?',
     setupH:'Your business data', sh1:'Service', sh2:'Price', sh3:'Hours',
     sv1:'Check-up', sv1t:'Daily 4 – 9 PM', sv2:'Follow-up call', sv2t:'Within a week', sv3:'Follow-up session', sv3t:'Sat & Tue', sv4:'Address', sv4t:'90th Street, Fifth Settlement',
     setupNote:'The bot answers from this table only. Change a price here and the reply changes too.',
